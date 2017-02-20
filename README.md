@@ -1,0 +1,7 @@
+# theJoeBlankenship Website
+
+This is a modified Bootstrap theme I adapted to better learn Java Script.
+
+The content on the pages is licensed using
+
+Many thanks to @davidtmiller of Blackrock Digital for the template which was released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-clean-blog/blob/gh-pages/LICENSE) license.
