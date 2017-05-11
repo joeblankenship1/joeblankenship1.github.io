@@ -181,6 +181,7 @@ members_geocoded = members.combine_first(locs)
                     <pre>
 # import folium
 import folium
+from folium.plugins import MarkerCluster
 
 # create an object for Folium that contains the location informatio you want to map.
 locations = list(zip(members_geocoded.Latitude, members_geocoded.Longitude))
