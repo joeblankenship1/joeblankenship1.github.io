@@ -95,19 +95,19 @@
 
                     <p>I started coding in GW-BASIC when I was very young, producing a couple playable games on my Dad’s computer. I then worked with C++ and a number of assembly languages while going to college for engineering, but after graduation my focus intensified on hardware and electronics (design and manufacturing) which took me away from developing software. While using and maintaining my engineering skills (both professionally and as a hobby), I’ve always wanted to properly relearn coding; not just as a necessity for projects, but as something I truly enjoy doing.</p>
 
-                    <p>Over the last couple years, I’ve made a concerted effort to improve my skills through books, podcasts, online courses, developer community meetings: anything to keep improving my home-grown affinity for coding. With the recent “data science” boom, I found an incredibly rewarding way to combine my years of analytical, engineering, and coding skills through experimenting with and hacking on data and systems with Python.</p>
+                    <p>Over the last couple years, I’ve made a concerted effort to improve my skills through books, podcasts, online courses, developer community meetings: anything to keep improving my homegrown affinity for coding. With the recent “data science” boom, I found an incredibly rewarding way to combine my years of analytical, engineering, and coding skills through experimenting with and hacking on data and systems with Python.</p>
 
-                    <p>For the first part in this series, we are going to look at <i><b>how</i></b> I look at a problem, formulate a solution, and produce the code I need to accomplish my list of requirements. The goal is two-fold. First, this will help me address problems in how I go about planning and executing a software solution. Secondly, this will hopefully help other people who are just starting out with coding say,“if this guy can do it, surely I can.”</p>
+                    <p>For the first part in this series, we are going to look at <i><b>how</i></b> I look at a problem, formulate a solution, and produce the code I need to accomplish my list of requirements. The goal is two-fold. First, this will help me address problems in how I go about planning and executing a software solution. Secondly, this will hopefully help other people who are just starting out with coding say, “if this guy can do it, surely I can.”</p>
 
                     <h2 class="section-heading">Getting Started</h2>
 
-                    <p>I have an application I want to build which will allow social scientists to perform qualitative analysis. One of the core requirements for the application is to import a number of data formats, one at a time or in bulk, as part of an ETL (extract transform load) pipeline. Ultimately, this functionality will be a part of a Flask framework that the scientists can use through their web browser.</p>
+                    <p>I have an application I want to build which will allow social scientists to perform qualitative analysis. One of the core requirements for the application is to import a number of data formats, one at a time or in bulk, as part of an ETL (extract transform load) pipeline. Ultimately, this functionality will be part of a Flask application that the scientists can use through their web browser.</p>
 
-                    <p>So two initial questions: what are the data types I need to import and where a I going to put the data. For this series, I will store the data in MongoDB (PostgreSQL was a very close second) and I will focus on importing the PDF files (no one like parsing PDFs… no one).</p>
+                    <p>So two initial questions: what are the data types I need to import and where am I going to put the data. For this series, I will store the data in MongoDB (PostgreSQL was a very close second; this was based on other requirements needed for the overall application) and I will focus on importing the PDF files (no one likes processing PDFs… no one).</p>
 
-                    <p>If you do not have MongoDB installed, you will need to do that now (<a href="https://docs.mongodb.com/manual/installation/" target="_blank">click here to tutorial</a>). Then, you will need to generate a Python virtual environment for the libraries specific to this blog series.</p>
+                    <p>If you do not have MongoDB installed, you will need to do that now (<a href="https://docs.mongodb.com/manual/installation/" target="_blank">click here for tutorial</a>). Then, you will need to generate a Python virtual environment for the libraries specific to this blog series.</p>
 
-                    <p><i><b>Note:</i></b> I am using Ubuntu 16.04 and Python3. You will have to find the Windows and MacOS equivalents to these tasks.</p>
+                    <p><i><b>Note:</i></b> I am using Ubuntu 16.04 and Python3. If you are running Windows or MacOS, you will have to find the equivalent commands.</p>
 
                     <pre>
 # navigate to the directory into which you wish to build the virtual environment, then...
@@ -121,7 +121,7 @@ source bin/activate
 pip3 install pdfx pymongo jupyter
 </pre>
 
-                    <p>Notice we also installed Jupyter Notebooks. At this stage in the project, I generally like to experiment with the libraries, read the documentation, and structure my pseudo-code in an easy to use environment that will also allow me to export to a <i><b>.py</i></b> file. Keep in mind, the tools we’re building now are going to have to integrate into the chosen UX/UI framework that the scientists will be using, so reading up on Flask functionality at this point is also very important.</p>
+                    <p>Notice we also installed Jupyter Notebooks. At this stage in the project, I generally like to experiment with the libraries, read the documentation, and structure my pseudocode in an easy-to-use environment that will also allow me to export to a <i><b>.py</i></b> file. Keep in mind, the tools we’re building now are going to have to integrate into the chosen UX/UI framework that the scientists will be using, so reading up on Flask functionality at this point is also very important.</p>
 
                     <h2 class="section-heading">PDFx</h2>
 
