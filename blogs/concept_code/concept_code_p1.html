@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="thejoeblankenship">
+    <meta name="author" content="thejoeblankenship">
+
+    <title>theJoeBlankenship</title>
+
+    <link rel="icon" type="image/ico" href="img/favicon.ico">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="../../css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="../../index.html">theJoeBlankenship</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="../../index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="../../news.html">News</a>
+                    </li>
+                    <li>
+                        <a href="../../research.html">Research</a>
+                    </li>
+                    <li>
+                        <a href="../../about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('img/geopyfolium.jpeg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>GeoPy and Folium</h1>
+                        <h2 class="subheading">A Simple and Effective Pair</h2>
+                        <span class="meta">Posted by <a href="../../about.html">Joe Blankenship</a> on May 11, 2017</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+                    <p>In my last blog post, I created an interactive geovisualization of member thoughts on challenges facing the data science community. I did this using the member data from the meetup group I organized until recently. In order to do this, the data had to be geocoded before I could create the geovisualization. To do this I used two, very impressive Python libraries: GeoPy and Folium. I will briefly go over what each library is and how I used them to create the visualization. Then, using the code example, you can try it yourself!</p>
+
+                    <h2 class="section-heading">GeoPy</h2>
+
+                    <p>GeoPy is a geocoding library that taps into mapping APIs such as Google, OpenStreetMap, and many others. To ensure that your requests do not time-out, you will need API keys to uses the services. You can find out more <a href="https://geopy.readthedocs.io/" target="_blank">here</a>.</p>
+
+                    <h2 class="section-heading">Folium</h2>
+
+                    <p>Folium is a great way to take your data and visualize it across multiple platforms using <a href="http://leafletjs.com/" target="_blank">leaflet.js</a>. Folium uses OpenStreetMap tiles, amongst others, as the basemap upon which your data is plotted in points, lines, polygons, or any combination of the three. You can find out more <a href="https://folium.readthedocs.io/en/latest/" target="_blank">here</a>.</p>
+
+                    <h2 class="section-heading">Putting It Together</h2>
+
+                    <p>First, you want to import and clean your data. Luckily, for the purpose of this data visualization, we won't need too much data from the overall member data set. The data set does come nicely structured in a TSV format.</p>
+
+                    <p><b>Note:</b> I am using Jupyter Notebook to perform these tasks.</p>
+
+                    <pre>
+# Import libraries
+import pandas as pd
+
+%matplotlib inline
+
+# Member demographics data set
+members = pd.read_csv('meetup_data_set.csv', delimiter='\t')
+</pre>
+
+                    <p>Once we have the data in a DataFrame, we can now do a quick check to see the distribution of the <b>Location</b> information.</p>
+
+                    <pre>
+members.Location.value_counts(ascending=True).plot(kind='barh', figsize=(12,14))
+</pre>
+
+                    <p>We can now create our geocoder using GeoPy. I used the GoogleV3 geocoder API for this project. Once again, you have to access a Google account and request the Developer API keys in order to use GoogleV3.</p>
+
+                    <pre>
+# import geopy geocoder with Googlev3 API
+# you need to get your own Google Maps Geocoder API key
+
+from api_key import api_key # this is an api_key file I created to contain my key
+from geopy import GoogleV3
+geolocator = GoogleV3(api_key=api_key)
+</pre>
+
+                    <p>At this point, I wanted to create a separate file to store my geocoded location index. You do not have to do this to produce the geovisualization. However, since GeoPy sometimes has problems geocoding large numbers of locations (e.g., the aforementioned time-outs), doing this creates an index of unique locations with latitude and longitude I can use to create a offline geocoder.</p>
+
+                    <pre>
+# create a list of all the unique locations
+member_locations = list(members.Location.unique())
+
+# create an empty list for the geocoder
+mem_loc_list = []
+
+# populate the empty list with the name, latitude, longitude
+for i in member_locations:
+    nom_geocoder = geolocator.geocode(i)
+    lat = nom_geocoder.latitude
+    lon = nom_geocoder.longitude
+    mem_loc_list.append([i, lat, lon])
+
+# import csv library
+import csv
+
+# write the geocoded locations to a csv file as backup index
+with open('mem_loc_list.csv', 'w') as output:
+    wr = csv.writer(output)
+    wr.writerows(mem_loc_list)
+</pre>
+
+                    <p>Now that you have used GeoPy in a much longer form, here is a much shorter version that will create the geolocator, build a geocoded DataFrame with the location information, and then combine both DataFrames producing a geocoded members data set.</p>
+
+                    <pre>
+from api_key import api_key
+from geopy import GoogleV3
+geolocator = GoogleV3(api_key=api_key)
+
+# create a geolocator that will iterate through each row and geocode the location data for that row
+mem_locs = [geolocator.geocode(i) for i in members.Location ]
+
+# create a DataFrame with the location name, latitude, and longitude with matching headers to your original <b>member</b> DataFrame.
+locs = pd.DataFrame([(i, i.latitude, i.longitude) for i in mem_locs], columns=['Location', 'Latitude', 'Longitude'])
+
+# use combine_first to merge the two DataFrames based on matching headers and a one-to-one index.
+members_geocoded = members.combine_first(locs)
+</pre>
+
+                    <p>Congratulations! You now have a geocoded data set that we can now put into a geovisualization. For this we will use Folium.</p>
+
+                    <pre>
+# import folium
+import folium
+from folium.plugins import MarkerCluster
+
+# create an object for Folium that contains the location informatio you want to map.
+locations = list(zip(members_geocoded.Latitude, members_geocoded.Longitude))
+
+# create a Folium Map object at a central location.
+#Tell it which tileset you want as a basemap how zoomed in you want to be.
+member_map = folium.Map(location=[40.403803, -49.219004], tiles='Cartodb Positron', zoom_start=3)
+
+# add the location information from earlier to the Map object.
+# Popups are the information from the members data set you want to render when
+# a user clicks on a point, line, polygon, etc.
+member_map.add_child(MarkerCluster(locations=locations, popups=members_geocoded["What do you think are the biggest issues in information analysis today?"]))
+
+# save the file as an html file which will create the leaflet.js script for you
+# you can also render this inline if you are using Jupyter Notebooks
+member_map.save('member_map.html')
+</pre>
+
+                    <p>And now we have an interactive geovisualization that shows the thoughts of a spatially distributed community! You can play with the final product <a href="../../blogs/organizer_lessons/organizer_lessons.html" target="_blank">here</a>.</p>
+
+                    <p>This functionality can be built into a dashboard or rendered as an entire page. In combination with BootStrap, it renders just as well on mobile as on a desktop. :)</p>
+
+                    <p>This work is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.</a></p>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="https://twitter.com/CGRIIorg" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/cgriiorg" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/joeblankenship1" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; 2015-2017 Joe Blankenship</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="../../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="../../js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
