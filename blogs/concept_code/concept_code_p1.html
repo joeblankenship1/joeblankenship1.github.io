@@ -97,7 +97,7 @@
 
                     <p>Over the last couple years, I’ve made a concerted effort to improve my skills through books, podcasts, online courses, developer community meetings: anything to keep improving my homegrown affinity for coding. With the recent “data science” boom, I found an incredibly rewarding way to combine my years of analytical, engineering, and coding skills through experimenting with and hacking on data and systems with Python.</p>
 
-                    <p>For the first part in this series, we are going to look at <i><b>how</i></b> I look at a problem, formulate a solution, and produce the code I need to accomplish my list of requirements. The goal is two-fold. First, this will help me address problems in how I go about planning and executing a software solution. Secondly, this will hopefully help other people who are just starting out with coding say, “if this guy can do it, surely I can.”</p>
+                    <p>For the first part in this series, we are going to look at <i><b>how</i></b> I look at a problem, formulate a solution, and produce the code I need to accomplish my list of requirements. The goal is two-fold. First, this will help me address problems in how I go about planning and executing a software solution that I then have to communicate to others. Secondly, this will hopefully help other people who are just starting out with coding say, “if this guy can do it, surely I can.”</p>
 
                     <h2 class="section-heading">Getting Started</h2>
 
@@ -123,45 +123,83 @@ pip3 install pdfx pymongo jupyter
 
                     <p>Notice we also installed Jupyter Notebooks. At this stage in the project, I generally like to experiment with the libraries, read the documentation, and structure my pseudocode in an easy-to-use environment that will also allow me to export to a <i><b>.py</i></b> file. Keep in mind, the tools we’re building now are going to have to integrate into the chosen UX/UI framework that the scientists will be using, so reading up on Flask functionality at this point is also very important.</p>
 
-                    <h2 class="section-heading">PDFx</h2>
+                    <p>We are now mostly ready to conceptualize how to extract data from PDFs.</p>
 
-                    <p></p>
+                    <h2 class="section-heading">PDFs and PDFx</h2>
 
-                    <pre>
-code goes here
-</pre>
+                    <p><a href="https://github.com/metachris/pdfx" target="_blank">PDFx</a> is a project by Chris Hager for the extraction of text, references, and metadata from PDFs. I chose to use this as it simplifies much of the PDFMiner libraries quirks and give us a very structured, pretty output for our MongoDB records.</p>
 
-                    <h2 class="section-heading">MongoDB</h2>
-
-                    <p></p>
+                    <p>What we need to do initially is to create a PDF object using this library in order to then extract the metadata, references, and text from our PDF(s).</p>
 
                     <pre>
-code goes here
+# import library
+import pdfx
+
+# create a pdf object for a single file
+pdf = pdfx.PDFx("filename.pdf")
+
+# extract the metadata from the pdf object
+metadata = pdf.get_metadata()
+
+# extract the references from the pdf
+# create a python dictionary of the references
+reference_dict = pdf.get_references_as_dict()
+
+# later if you wanted to crawl from this PDF via its references
+# it can download PDFs from reference hyperlinks
+# pdf.download_pdfs("temp_down_folder/")
 </pre>
 
-                    <p></p>
+                    <p>Now at this point, we've done what we've set out to do, but the text looks like a mess when we attempt to extract it. We need to better structure our output before we put it into MongoDB. At a minimum, we need to group the text by heading and paragraph as to make qualitative coding, searching, and analysis much easier.</p>
 
                     <pre>
-code goes here
+# extract the text from the PDF
+# replace the return characters with nothing creating one long string
+# split the string at the form feed characters
+text = pdf.get_text()
+text_to_mongo = text.replace('\n', '').split("\x0c")
 </pre>
 
-                    <p></p>
+                    <p>This should result in a much improved document structure that can then be processed using natural language processing/machine learning (which is a requirement we'll build towards later, but plan for now). The above code will be further abstracted for use in functions and classes within our Flask application, so it is important that we think about how this single file subroutine may have to be manipulated for bulk uploads (including async and threading considerations for large PDFs with images and tables).</p>
+
+                    <p>Now, we are ready to conceptualize how we are going to push this into MongoDB.</p>
+
+                    <h2 class="section-heading">MongoDB and PyMongo</h2>
+
+                    <p><a href="https://www.mongodb.com/" target="_blank">MongoDB</a> is a document-oriented database classified as NoSQL. It stores records in its "schema-less" JSON (called BSON) format. Since we're using Flask, we'll eventually interact with MongoDB through a RESTful API using <a href="http://python-eve.org/foreword.html" target="_blank">Eve</a>, but for now we'll be using <a href="https://api.mongodb.com/python/current/" target="_blank">PyMongo</a> directly to understand how to interface between our extracted data and MongoDB.</p>
+
+                    <p>What we need to do initially is create a MongoDB object through which we can push our PDF metadata, references, and text as a single document into the database.</p>
 
                     <pre>
-code goes here
+# import MongoClient from the PyMongo library, datetime, and pprint
+from pymongo import MongoClient
+import datetime
+import pprint
+
+# insert documents (stored as dictionaries in BSON (JSON) format (UTF-8))
+# notice we can create the schema we want ad-hoc for our document
+post = {
+    "metadata": metadata,
+    "text": text_to_mongo,
+    "references": reference_dict,
+    "import_date": datetime.datetime.utcnow(),
+    "tags": ["pdf"]
+}
+
+# if you have already created a database or need to create a new database
+db = client.name_of_database
+
+# create an object for your PDF data, then insert it into the database
+posts = db.posts
+post_id = posts.insert_one(post).inserted_id
+
+# now check the output for your new MongoDB document
+pprint.pprint(posts.find_one())  # search with dict keys or "_id" for Mongo UID
 </pre>
 
-                    <p></p>
+                    <p>At this point, we can now see that our PDF output from before can be queried from our database. MongoDB allows us a lot of flexibility, but this flexibility needs to be closely regulated through our API once we get ready to move our conceptual ETL pipeline into our Flask application.</p>
 
-                    <pre>
-code goes here
-</pre>
-
-                    <p></p>
-
-                    <pre>
-code goes here
-</pre>
+                    <h2 class="section-heading">Final Thoughts</h2>
 
                     <p></p>
 
