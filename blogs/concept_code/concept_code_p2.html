@@ -91,24 +91,14 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-                    <p> </p>
-
-                    <h2 class="section-heading">Forming Functions</h2>
-
-                    <p></p>
-
+                    <p>This is part 2 of the conceptualizing code blog series. If you have not read part 1, you can do so <a href="../../blogs/concept_code/concept_code_p1.html">here</a> before continuing.</p>
                     <p><i><b>Note:</i></b> I am using Ubuntu 16.04 and Python3. If you are running Windows or MacOS, you will have to find the equivalent commands.</p>
 
+                    <h2 class="section-heading">Forming Functions</h2>
+                    <p></p>
+                    <p></p>
                     <pre>
-# navigate to the directory into which you wish to build the virtual environment, then...
-python3 -m venv name_of_environment
 
-# activate the virtual environment
-cd name_of_environment
-source bin/activate
-
-# then install some libraries
-pip3 install pdfx pymongo jupyter
 </pre>
 
                     <p></p>
@@ -118,22 +108,12 @@ pip3 install pdfx pymongo jupyter
                     <p></p>
 
                     <pre>
-# import library
-import pdfx
+# activate the virtual environment from Part 1
+cd name_of_environment
+source bin/activate
 
-# create a pdf object for a single file
-pdf = pdfx.PDFx("filename.pdf")
-
-# extract the metadata from the pdf object
-metadata = pdf.get_metadata()
-
-# extract the references from the pdf
-# create a python dictionary of the references
-reference_dict = pdf.get_references_as_dict()
-
-# later if you wanted to crawl from this PDF via its references
-# it can download PDFs from reference hyperlinks
-# pdf.download_pdfs("temp_down_folder/")
+# then install Flask, Eve, and MongoEngine
+pip3 install eve Flask flask-mongoengine
 </pre>
 
                     <p></p>
