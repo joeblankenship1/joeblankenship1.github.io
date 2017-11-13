@@ -96,8 +96,35 @@
 
                     <h2 class="section-heading">Forming Functions</h2>
                     <p><i><b>Note:</i></b> I am using Ubuntu 16.04 and Python3. If you are running Windows or MacOS, you will have to find the equivalent commands.</p>
-                    <p></p>
+                    <p>After activating your virtual environment, open up Jupyter Notebooks again and begin to examine the sections related to PDF import and extraction. We have to import the PDFx library, create a pdf object, and then extract the metadata, references, and main text. However, we need to be able to send any PDF through this process so that we can populate our database.</p>
                     <pre>
+#!/usr/bin/env python3
+"""
+PDF extraction
+import_metadata
+import_references
+import_text
+"""
+
+import pdfx
+
+class PDFExtract:
+    '''A class that uses PDFx to
+    extract metadata, references, and text'''
+    def import_metadata(self):
+        pdf = pdfx.PDFx(self)
+        metadata = pdf.get_metadata()
+        return metadata
+
+    def import_references(self):
+        pdf = pdfx.PDFx(self)
+        reference_dict = pdf.get_references_as_dict()
+        return reference_dict
+
+    def import_text(self):
+        pdf = pdfx.PDFx(self)
+        text = pdf.get_text().replace('\n', '').split("\x0c")
+        return text
 
 </pre>
 
