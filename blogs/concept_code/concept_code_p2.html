@@ -95,7 +95,7 @@
                     <p>In the first part, we built very basic scripts for processing PDFs and pushing the output into MongoDB. However, that is not very efficient if we have more than one PDF or we're importing, processing, and manipulating the data through a dashboard, API, or webform; we need to put our basic scripts into a set of callable methods. I've opted to create two classes: one for extracting the PDF information and one for loading that data into the MongoDB collection for PDFs.</p>
                     <p>The goal of this is to make our code as reusable as possible since this will later be used in our application.</p>
 
-                    <h2 class="section-heading">Forming Functions</h2>
+                    <h2 class="section-heading">From Snippets to Modules</h2>
                     <p><i><b>Note:</i></b> I am using Ubuntu 16.04 and Python3. If you are running Windows or MacOS, you will have to find the equivalent commands.</p>
                     <p>After activating your virtual environment, open up Jupyter Notebook and begin to examine the sections related to PDF import and extraction. We have to import the PDFx library, create a pdf object, and then extract the metadata, references, and main text. However, we need to be able to send any PDF through this process so that we can populate our database.</p>
                     <pre>
