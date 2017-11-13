@@ -92,11 +92,11 @@
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
                     <p>First, if you haven't read part 1, please proceed <a href="../../blogs/concept_code/concept_code_p1.html" target="_blank">here</a> first and then come back.</p>
-                    <p>In the first part, we built very basic scripts for processing PDFs and pushing the output into MongoDB. However, that is not very efficient if we have more than one PDF or we're importing, processing, and manipulating the data through a dashboard, API, or webform; we need to put our basic scripts into functions.</p>
+                    <p>In the first part, we built very basic scripts for processing PDFs and pushing the output into MongoDB. However, that is not very efficient if we have more than one PDF or we're importing, processing, and manipulating the data through a dashboard, API, or webform; we need to put our basic scripts into a set of callable methods. I've opted to create two classes: one for extracting the PDF information and one for loading that data into the MongoDB collection for PDFs.</p>
 
                     <h2 class="section-heading">Forming Functions</h2>
                     <p><i><b>Note:</i></b> I am using Ubuntu 16.04 and Python3. If you are running Windows or MacOS, you will have to find the equivalent commands.</p>
-                    <p>After activating your virtual environment, open up Jupyter Notebooks again and begin to examine the sections related to PDF import and extraction. We have to import the PDFx library, create a pdf object, and then extract the metadata, references, and main text. However, we need to be able to send any PDF through this process so that we can populate our database.</p>
+                    <p>After activating your virtual environment, open up Jupyter Notebook and begin to examine the sections related to PDF import and extraction. We have to import the PDFx library, create a pdf object, and then extract the metadata, references, and main text. However, we need to be able to send any PDF through this process so that we can populate our database.</p>
                     <pre>
 #!/usr/bin/env python3
 """
@@ -135,10 +135,65 @@ pdf_file = "pdf_file.pdf"
 PDFExtract.metadata(pdf_file)
 </pre>
 
-                    <p>We now have to do the same for our scripts for pushing the PDF data into MongoDB.</p>
+                    <p>We now have to push the PDF data into MongoDB.</p>
                     <pre>
+from pymongo import MongoClient
+import datetime
+
+class PDFLoad:
+    '''A class used to load PDFs into MongoDB'''
+    def mongo_load_pdf(self):
+        client = MongoClient()
+        db = client.mongo_pdf
+        posts = db.posts
+        post = {
+            "metadata": PDFExtract.import_metadata(self),
+            "text": PDFExtract.import_text(self),
+            "references": PDFExtract.import_references(self),
+            "import_date": datetime.datetime.utcnow(),
+            "tags": ["pdf"]
+        }
+        posts.insert_one(post)
 
 </pre>
+
+                    <p>And now we can simply pass a single command to load our PDF file into Mongo DB.</p>
+                    <pre>
+# Push a single PDF into MondoDB 'mongo_pdf' collection
+PDFLoad.mongo_load_pdf("pdf_file.pdf")
+</pre>
+                    <p>Now, using the <b>%timeit</b> magic in Jupyter, executing this operation takes way to long! Before we put this into our Flask app, we have to analyze our code to determine the bottlenecks for our current design.</p>
+                    <pre>
+import pdfx
+from pymongo import MongoClient
+import datetime
+
+class PDFExLoad:
+    '''A class that uses PDFx to
+    extract metadata, references, and text
+    we then load the output into MongoDB'''
+    def ExLoader(self):
+        pdf = pdfx.PDFx(self)
+        client = MongoClient()
+        db = client.mongo_pdf
+        '''Extract the metadata, text, and references'''
+        metadata = pdf.get_metadata()
+        text = pdf.get_text().replace('\n', '').split("\x0c")
+        reference_dict = pdf.get_references_as_dict()
+        '''Take the extracted data and push it to MongoDB'''
+        posts = db.posts
+        post = {
+            "metadata": metadata,
+            "text": text,
+            "references": reference_dict,
+            "import_date": datetime.datetime.utcnow(),
+            "tags": ["pdf"]
+        }
+        posts.insert_one(post)
+
+</pre>
+                    <p>This results in a 300% increase in speed! However, this means that I now have to perform an API call to MongoDB for each element extracted from the PDF. With some async magic, this should not be much of an issue later.</p>
+                    <p>I still feel this is bit slow, so I'll revisit my implementation of the PDFx library later; possibly opting to user the PDFMiner library directly to alleviate the remaining speed optimization issues.</p>
 
                     <h2 class="section-heading">Flask APIs</h2>
 
