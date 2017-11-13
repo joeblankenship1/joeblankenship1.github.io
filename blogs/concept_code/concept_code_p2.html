@@ -100,7 +100,7 @@
                     <pre>
 #!/usr/bin/env python3
 """
-PDF extraction
+PDFExtract
 import_metadata
 import_references
 import_text
@@ -128,7 +128,17 @@ class PDFExtract:
 
 </pre>
 
-                    <p></p>
+                    <p>Now we can call our class methods for extracting the different sections of the PDF that we need.</p>
+                    <pre>
+# return the metadata for a single file
+pdf_file = "pdf_file.pdf"
+PDFExtract.metadata(pdf_file)
+</pre>
+
+                    <p>We now have to do the same for our scripts for pushing the PDF data into MongoDB.</p>
+                    <pre>
+
+</pre>
 
                     <h2 class="section-heading">Flask APIs</h2>
 
