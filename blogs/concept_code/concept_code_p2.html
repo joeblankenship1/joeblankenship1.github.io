@@ -77,7 +77,7 @@
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="post-heading">
                         <h1>Conceptualizing Code</h1>
-                        <h2 class="subheading">Part 2: Functions and Flask</h2>
+                        <h2 class="subheading">Part 2: Modules and Flask</h2>
                         <span class="meta">Posted by <a href="../../about.html">Joe Blankenship</a> on October 29, 2017</span>
                     </div>
                 </div>
@@ -93,19 +93,12 @@
 
                     <p>First, if you haven't read part 1, please proceed <a href="../../blogs/concept_code/concept_code_p1.html" target="_blank">here</a> first and then come back.</p>
                     <p>In the first part, we built very basic scripts for processing PDFs and pushing the output into MongoDB. However, that is not very efficient if we have more than one PDF or we're importing, processing, and manipulating the data through a dashboard, API, or webform; we need to put our basic scripts into a set of callable methods. I've opted to create two classes: one for extracting the PDF information and one for loading that data into the MongoDB collection for PDFs.</p>
+                    <p>The goal of this is to make our code as reusable as possible since this will later be used in our application.</p>
 
                     <h2 class="section-heading">Forming Functions</h2>
                     <p><i><b>Note:</i></b> I am using Ubuntu 16.04 and Python3. If you are running Windows or MacOS, you will have to find the equivalent commands.</p>
                     <p>After activating your virtual environment, open up Jupyter Notebook and begin to examine the sections related to PDF import and extraction. We have to import the PDFx library, create a pdf object, and then extract the metadata, references, and main text. However, we need to be able to send any PDF through this process so that we can populate our database.</p>
                     <pre>
-#!/usr/bin/env python3
-"""
-PDFExtract
-import_metadata
-import_references
-import_text
-"""
-
 import pdfx
 
 class PDFExtract:
@@ -164,6 +157,12 @@ PDFLoad.mongo_load_pdf("pdf_file.pdf")
 </pre>
                     <p>Now, using the <b>%timeit</b> magic in Jupyter, executing this operation takes way to long! Before we put this into our Flask app, we have to analyze our code to determine the bottlenecks for our current design.</p>
                     <pre>
+#!/usr/bin/env python3
+"""
+PDFExLoad
+ExLoader
+"""
+
 import pdfx
 from pymongo import MongoClient
 import datetime
@@ -191,9 +190,13 @@ class PDFExLoad:
         }
         posts.insert_one(post)
 
+if __name__ == "__main__":
+    import sys
+    PDFExLoad.ExLoader(str(sys.argv[1]))
+
 </pre>
                     <p>This results in a 300% increase in speed! However, this means that I now have to perform an API call to MongoDB for each element extracted from the PDF. With some async magic, this should not be much of an issue later.</p>
-                    <p>I still feel this is bit slow, so I'll revisit my implementation of the PDFx library later; possibly opting to user the PDFMiner library directly to alleviate the remaining speed optimization issues.</p>
+                    <p>I still feel this is bit slow, so I'll revisit my implementation of the PDFx library later; possibly opting to user the PDFMiner library directly to alleviate the remaining speed optimization issues. You can save the above file as <b>pfdexload.py</b>.</p>
 
                     <h2 class="section-heading">Flask APIs</h2>
 
