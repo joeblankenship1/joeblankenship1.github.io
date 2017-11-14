@@ -99,6 +99,7 @@
                     <p><i><b>Note:</i></b> I am using Ubuntu 16.04 and Python3. If you are running Windows or MacOS, you will have to find the equivalent commands.</p>
                     <p>After activating your virtual environment, open up Jupyter Notebook and begin to examine the sections related to PDF import and extraction. We have to import the PDFx library, create a pdf object, and then extract the metadata, references, and main text. However, we need to be able to send any PDF through this process so that we can populate our database.</p>
                     <pre>
+# be inside of your virtual environment's directory (e.g., name_of_environment)
 import pdfx
 
 class PDFExtract:
@@ -156,6 +157,7 @@ class PDFLoad:
 PDFLoad.mongo_load_pdf("pdf_file.pdf")
 </pre>
                     <p>Now, using the <b>%timeit</b> magic in Jupyter, executing this operation takes way to long! Before we put this into our Flask app, we have to analyze our code to determine the bottlenecks for our current design.</p>
+                    <p>In examination of the above code, each method in my PDFExtract class has to load a new PDF object each time they run. The PDFLoad class then has to call to PDFExtract for each of its methods. This is far too much back and forth for a single file input and will be too long for multiple imports. So lets combine our two classes into a single class.</p>
                     <pre>
 #!/usr/bin/env python3
 """
@@ -195,31 +197,35 @@ if __name__ == "__main__":
     PDFExLoad.ExLoader(str(sys.argv[1]))
 
 </pre>
-                    <p>This results in a 300% increase in speed! However, this means that I now have to perform an API call to MongoDB for each element extracted from the PDF. With some async magic, this should not be much of an issue later.</p>
-                    <p>I still feel this is bit slow, so I'll revisit my implementation of the PDFx library later; possibly opting to user the PDFMiner library directly to alleviate the remaining speed optimization issues. You can save the above file as <b>pfdexload.py</b>.</p>
+                    <p>This results in a 300% increase in speed! With some async magic in Flask, I can now call to MongoDB for each element extracted from the PDF.</p>
+                    <p>I still feel this is bit slow, so I'll revisit my implementation of the PDFx library later; possibly opting to user the PDFMiner library directly to alleviate the remaining speed optimization issues. You can save the above file as <b>pfdexload.py</b> if you wish to use it as a stand-alone program.</p>
 
                     <h2 class="section-heading">Flask APIs</h2>
 
-                    <p></p>
-
+                    <p><a href="http://flask.pocoo.org/" target="_blank">Flask</a> "is a microframework for Python based on Werkzeug and Jinja 2." Thankfully for us, it makes building APIs, microservices, and web apps a breeze.</p>
+                    <p>Inside of your activated virtual environment, install Flask and the dependencies you will need to build the API.</p>
                     <pre>
-# activate the virtual environment from Part 1
-cd name_of_environment
-source bin/activate
-
-# then install Flask, Eve, and MongoEngine
+# Install Flask, Eve, and MongoEngine
+# be inside of your virtual environment's directory (e.g., name_of_environment)
 pip3 install eve Flask flask-mongoengine
 </pre>
 
-                    <p></p>
+                    <p>In addition to Flask, we installed <a href="http://python-eve.org/" target="_blank">Eve</a> which is an open source Python REST API framework that will work securely and efficiently with MongoDB. We can now proceed in creating our initial Flask app.</p>
 
                     <pre>
-# extract the text from the PDF
-# replace the return characters with nothing creating one long string
-# split the string at the form feed characters
-text = pdf.get_text()
-text_to_mongo = text.replace('\n', '').split("\x0c")
+# for Mac and Windows users, you will have to find the equivalent commands for
+# the terminal/command prompt respectively.
+
 </pre>
+
+                    <p>Now that we have a file folder structure and the API, we need to code and configure it.</p>
+
+                    <pre>
+
+
+</pre>
+
+                    <p></p>
 
                     <h2 class="section-heading">Final Thoughts</h2>
 
