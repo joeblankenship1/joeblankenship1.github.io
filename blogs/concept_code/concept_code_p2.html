@@ -199,7 +199,7 @@ if __name__ == "__main__":
     PDFExLoad.ExLoader(str(sys.argv[1]))
 
 </pre>
-                    <p>I have combined the extractor and loader classes together into a single class that has a streamlined method for single PDF extraction and loading. I've also added proper styling to my module in case I want to re-use my code later as a stand-alone program.</p>
+                    <p>I have combined the extractor and loader classes together into a single class that has a streamlined method for single PDF extraction and loading. I've also added proper styling to my module in case I want to reuse my code later as a stand-alone program.</p>
                     <p>This results in a 300% increase in speed! With some async magic in Flask, I can now call to MongoDB for each element extracted from the PDF.</p>
                     <p>I still feel this is bit slow, so I'll revisit my implementation of the PDFx library later; possibly opting to user the PDFMiner library directly to alleviate the remaining speed optimization issues. You can save the above file as <b>pfdexload.py</b> if you wish to use it as a stand-alone program.</p>
 
@@ -271,7 +271,7 @@ PAGINATION = False  # set to integer to limit the number of output items/page
 python eve_server.py
 </pre>
 
-                    <p>This should give us a prompt that our API service is running on localhost port 5000. We can now use <b>curl</b> to test our API output. If you don't have curl or cannot use it, then you can go to <a href="http://localhost:5000/api/posts" target="_blank">http://localhost:5000/api/posts</a> to view the API output<br>
+                    <p>This should give us a prompt that our API service is running on localhost port 5000. We can now use <b>curl</b> to test our API output. If you don't have curl or cannot use it, then you can go to <a href="http://localhost:5000/api/posts" target="_blank">http://localhost:5000/api/posts</a> to view the API output.<br>
                         <b>Note:</b> I wouldn't do this if your database is large; it could lock up your browser. You can adjust your pagination setting to partially resolve this issue, but you should use curl if possible.</p>
                     <pre>
 curl -g http://localhost:5000/api/posts\?where\=\{\"tags\":\"pdf\"\}
