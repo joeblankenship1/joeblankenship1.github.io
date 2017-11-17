@@ -77,8 +77,8 @@
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="post-heading">
                         <h1>Conceptualizing Code</h1>
-                        <h2 class="subheading">Part 2: Modules and Flask</h2>
-                        <span class="meta">Posted by <a href="../../about.html">Joe Blankenship</a> on October 29, 2017</span>
+                        <h2 class="subheading">Part 2: Modules and Eve</h2>
+                        <span class="meta">Posted by <a href="../../about.html">Joe Blankenship</a> on November 16, 2017</span>
                     </div>
                 </div>
             </div>
@@ -122,6 +122,7 @@ class PDFExtract:
 
 </pre>
 
+                    <p>I have taken my snippets from part 1 and turned them into methods inside of a larger class dedicated to extracting the data we need from PDFs.</p>
                     <p>Now we can call our class methods for extracting the different sections of the PDF that we need.</p>
                     <pre>
 # return the metadata for a single file
@@ -151,7 +152,8 @@ class PDFLoad:
 
 </pre>
 
-                    <p>And now we can simply pass a single command to load our PDF file into Mongo DB.</p>
+                    <p>Once again, our snippets now constitute a method inside of a class dedicated to loading our extracted PDF data into MongoDB.</p>
+                    <p>Now we can simply pass a single command to load our PDF file into Mongo DB.</p>
                     <pre>
 # Push a single PDF into MondoDB 'mongo_pdf' collection
 PDFLoad.mongo_load_pdf("pdf_file.pdf")
@@ -197,35 +199,85 @@ if __name__ == "__main__":
     PDFExLoad.ExLoader(str(sys.argv[1]))
 
 </pre>
+                    <p>I have combined the extractor and loader classes together into a single class that has a streamlined method for single PDF extraction and loading. I've also added proper styling to my module in case I want to re-use my code later as a stand-alone program.</p>
                     <p>This results in a 300% increase in speed! With some async magic in Flask, I can now call to MongoDB for each element extracted from the PDF.</p>
                     <p>I still feel this is bit slow, so I'll revisit my implementation of the PDFx library later; possibly opting to user the PDFMiner library directly to alleviate the remaining speed optimization issues. You can save the above file as <b>pfdexload.py</b> if you wish to use it as a stand-alone program.</p>
 
-                    <h2 class="section-heading">Flask APIs</h2>
+                    <h2 class="section-heading">Flask API with Eve</h2>
 
                     <p><a href="http://flask.pocoo.org/" target="_blank">Flask</a> "is a microframework for Python based on Werkzeug and Jinja 2." Thankfully for us, it makes building APIs, microservices, and web apps a breeze.</p>
                     <p>Inside of your activated virtual environment, install Flask and the dependencies you will need to build the API.</p>
                     <pre>
-# Install Flask, Eve, and MongoEngine
+# Install Flask, Eve, PyMongo
 # be inside of your virtual environment's directory (e.g., name_of_environment)
-pip3 install eve Flask flask-mongoengine
+pip3 install eve Flask flask-pymongo
 </pre>
 
-                    <p>In addition to Flask, we installed <a href="http://python-eve.org/" target="_blank">Eve</a> which is an open source Python REST API framework that will work securely and efficiently with MongoDB. We can now proceed in creating our initial Flask app.</p>
-
+                    <p>In addition to Flask and PyMongo, we installed <a href="http://python-eve.org/" target="_blank">Eve</a> which is an open source Python REST API framework that will work securely and efficiently with MongoDB. We can now proceed in creating our initial Flask framework for the Eve API.</p>
                     <pre>
 # for Mac and Windows users, you will have to find the equivalent commands for
 # the terminal/command prompt respectively.
-
+mkdir app
+mkdir app/api
+touch app/api/eve_server.py
+touch app/api/settings.py
 </pre>
 
-                    <p>Now that we have a file folder structure and the API, we need to code and configure it.</p>
-
+                    <p>Now that we have a file folder structure and the API files, we need to code and configure the files with our API instructions.</p>
                     <pre>
+# eve_server.py
 
+from eve import Eve  # import the Eve library from your virtual environment
 
+app = Eve()  # create an Eve object named app
+
+# this statement allows this file to run as an independent Python program
+if __name__ == '__main__':
+    app.run(debug=True)
+</pre>
+                    <pre>
+# settings.py
+
+# Mongo Settings commented out as we will tell Eve where to look for Mongo below
+# This will be part of our Flask app configuration later
+# MONGO_HOST = 'localhost'
+# MONGO_PORT = '27017'
+# MONGO_USERNAME = ''
+# MONGO_PASSWORD = ''
+
+URL_PREFIX = 'api'  # this will proceed 'localhost:5000'
+MONGO_DBNAME = 'mongo_pdf'  # the database in MongoDB we've been using
+# here we will identify the 'posts' collection and the schema we want to output
+# from our Eve API
+DOMAIN = {
+    'posts': {
+        'schema': {
+            'metadata': {'type': 'string'},
+            'text': {'type': 'string'},
+            'references': {'type': 'string'},
+            'import_date': {'type': 'integer'},
+            'tags': {'type': 'string'}
+        }
+    }
+}
+X_DOMAINS = 'http://localhost:8080'  # this URL is allowed to access our API
+HATEOAS = False  # allows/denies dynamic navigation of API
+PAGINATION = False  # set to integer to limit the number of output items/page
+</pre>
+                    <p>For more details on Eve API setup, refer to the <a href="http://python-eve.org/" target="_blank">Eve documentation</a>.</p>
+                    <p>Now we can go to our Terminal and run our server.</p>
+                    <pre>
+# Run our Eve API server
+python eve_server.py
 </pre>
 
-                    <p></p>
+                    <p>This should give us a prompt that our API service is running on localhost port 5000. We can now use <b>curl</b> to test our API output. If you don't have curl or cannot use it, then you can go to <a href="http://localhost:5000/api/posts" target="_blank">http://localhost:5000/api/posts</a> to view the API output<br>
+                        <b>Note:</b> I wouldn't do this if your database is large; it could lock up your browser. You can adjust your pagination setting to partially resolve this issue, but you should use curl if possible.</p>
+                    <pre>
+curl -g http://localhost:5000/api/posts\?where\=\{\"tags\":\"pdf\"\}
+</pre>
+
+                    <p>This should return every document in your MongoDB collection posts with the tag <b>pdf</b>. Curl can run some fairly complex queries against our API, so feel free to experiment.</p>
 
                     <h2 class="section-heading">Final Thoughts</h2>
 
