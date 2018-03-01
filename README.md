@@ -1,6 +1,6 @@
 # theJoeBlankenship Website
 
-This is a modified Bootstrap theme I adapted to better learn Java Script.
+This is a modified Bootstrap theme I adapted to better learn JavaScript.
 
 The content on the pages is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
 
