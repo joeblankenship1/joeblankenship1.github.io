@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Multiple Linear Regression - Foreclosure Analysis in R">
+    <meta name="author" content="theJoeBlankenship">
+
+    <title>theJoeBlankenship</title>
+
+    <link rel="icon" type="image/ico" href="../../img/favicon.ico">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="../../css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="../../index.html">theJoeBlankenship</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="../../index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="../../news.html">News</a>
+                    </li>
+                    <li>
+                        <a href="../../research.html">Research</a>
+                    </li>
+                    <li>
+                        <a href="../../about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('img/mlr_r.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>Multiple Linear Regression</h1>
+                        <h2 class="subheading">Foreclosure Analysis in R</h2>
+                        <span class="meta">Posted by <a href="../../about.html">Joe Blankenship</a> on April 29, 2018</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+                    <p>Multiple linear regression is useful for modelling the relationship between a numeric outcome or dependent variable (Y) and multiple explanatory or independent variables (X)</p>
+
+                    <p>If you need help, don&rsquo;t hesitate to type: help(lm).</p>
+
+                    <p>From the foreclosure data set, we are going to use median house value <b>mval</b> in the census tract as our dependent variable as we fit a linear regression model using median household income <b>inc</b> and proportion of population over 25 with at least a bachelors degree <b>pop25</b> as explanatory or independent variables:</p>
+
+                    <pre>
+attach(fcdf)
+model1 <- lm(mval~inc+pop25, data=fcdf)
+summary(model1)
+
+## Call:
+## lm(formula = mval ~ inc + pop25, data = fcdf)
+##
+## Residuals:
+##     Min      1Q  Median      3Q     Max
+## -144397  -20532   -1895   15213  274508
+##
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept) 5.110e+04  5.895e+03   8.668 2.64e-16 ***
+## inc         9.894e-01  1.402e-01   7.059 1.14e-11 ***
+## pop25       1.882e+03  1.915e+02   9.829  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+##
+## Residual standard error: 41670 on 305 degrees of freedom
+## Multiple R-squared:  0.6149, Adjusted R-squared:  0.6124
+## F-statistic: 243.5 on 2 and 305 DF,  p-value: &lt; 2.2e-16
+</pre>
+
+                    <p>With the <b>Multiple R-Squared</b> value, we can state approximately 61% of the variation in median house value can be explained by our model (income and population over 25 with degrees).</p>
+
+                    <p>The <b>F-statistic and P value</b> give us a sense of the overall significance of our model. This tests the null hypothesis that all the model coefficients are 0. In this case, it tests if the slope of income and the slope of population with degrees is 0.</p>
+
+                    <p>The <b>residual standard error</b> tells us how far the observed median house values (Y) are from the predicted or fitted median house values (Y-hats). This gives us an idea of typical sized residual or error (e).</p>
+
+                    <p>The <b>intercept (5.110e+04 or 51100)</b> is the estimated mean dependent value (Y) when all explanatory values (X) are 0. In this case, our intercept is the estimated mean median house value for incomes and populations of 0.</p>
+
+                    <p>The <b>slope for income (9.894e-01 or 0.9894)</b> tells us the effect of income on median house value adjusting or controlling for proportions of populations over 25 with degrees. </p>
+
+                    <p>The <b>slope for population (1.882e+03 or 1882)</b> tells us the effect of population older than 25 with degrees on median house value adjusting or controlling for income.</p>
+
+                    <p>We can now calculate <b>Pearson&rsquo;s correlation</b> between income and proportion of population over 25 with degrees:</p>
+
+                    <pre>
+cor(inc, pop25, method="pearson")
+
+## [1] 0.7058064
+</pre>
+
+                    <p>We can interpret this in stating the collinearity between income and population variables implies that we should NOT directly interpret the slope (for example income) as the effect of income on median house value adjusting for population over 25 with degrees. The relatively high correlation between income and population suggests that these two effects are somewhat bounded together.</p>
+
+                    <p>We can also quickly check our confidence intervals for the model coefficients (inc and pop25):</p>
+
+                    <pre>
+confint(model1, level=0.95)
+
+##                    2.5 %       97.5 %
+## (Intercept) 3.949892e+04 62700.044665
+## inc         7.135851e-01     1.265221
+## pop25       1.505356e+03  2258.935658
+</pre>
+
+                    <p>This tells us, for example, for our slope for income of 9.894e-01 (0.9894), we are 95% confident that the true slope is between 0.7136 and 1.2652.</p>
+
+                    <p>Now lets fit a linear model with all the variables in our data frame:</p>
+
+                    <pre>
+model2 <- lm(mval~., data=fcdf)
+summary(model2)
+
+## Call:
+## lm(formula = mval ~ ., data = fcdf)
+##
+## Residuals:
+##     Min      1Q  Median      3Q     Max
+## -100139  -20799   -1869   13889  291081
+##
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)  5.083e+04  1.907e+04   2.665  0.00812 **
+## highc       -2.010e+03  1.044e+03  -1.925  0.05521 .
+## black       -1.870e+04  1.833e+04  -1.021  0.30831
+## hisp        -4.577e+03  2.016e+04  -0.227  0.82053
+## inc          1.083e+00  1.842e-01   5.878 1.12e-08 ***
+## oocc        -4.616e+04  1.838e+04  -2.511  0.01258 *
+## pop25        1.615e+03  2.227e+02   7.251 3.61e-12 ***
+## notblt      -1.477e+03  3.452e+04  -0.043  0.96591
+## aft00       -1.662e+04  1.244e+04  -1.336  0.18259
+## hs           7.428e+04  2.343e+04   3.170  0.00168 **
+## rate         1.691e+03  1.121e+03   1.509  0.13240
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+##
+## Residual standard error: 40050 on 297 degrees of freedom
+## Multiple R-squared:  0.6537, Adjusted R-squared:  0.642
+## F-statistic: 56.05 on 10 and 297 DF,  p-value: &lt; 2.2e-16
+</pre>
+
+                    <p>Plot the model to check its assumptions through examination of the residuals or errors:</p>
+
+                    <pre>
+plot(model2)
+</pre>
+
+                    <a href="img/unnamed-chunk-5-1.png">
+                        <img class="img-responsive" src="img/unnamed-chunk-5-1.png" alt="Oops!">
+                    </a>
+
+                    <a href="img/unnamed-chunk-5-2.png">
+                        <img class="img-responsive" src="img/unnamed-chunk-5-2.png" alt="Oops!">
+                    </a>
+
+                    <a href="img/unnamed-chunk-5-3.png">
+                        <img class="img-responsive" src="img/unnamed-chunk-5-3.png" alt="Oops!">
+                    </a>
+
+                    <a href="img/unnamed-chunk-5-4.png">
+                        <img class="img-responsive" src="img/unnamed-chunk-5-4.png" alt="Oops!">
+                    </a>
+
+                    <p>We can see from the residuals vs. fitted plot that the relationship between mval, inc, and pop25 is relatively linear, but there is a bit of heteroscedasticity (non-constant variance) that needs to be addressed (luckily it labels some values for you to examine). Adjustments to these values may lead to a better fit for your model.</p>
+
+                    <p>With the normal Q-Q plot, we can see that median house value given income and population over 25 with degree has visible heteroscedasticity that will need to be addressed. Otherwise, the Q-Q plot shows a relatively good fit.</p>
+
+                    <p>The scale-location or spread-level plot shows the raw data as the square roots of the absolute values of the residuals against the fitted values. The lowess curve&rsquo;s upward slope in red serves to further demonstrates the effects of our heteroscedasticity on the model.</p>
+
+                    <p>We can see in the residuals vs. leverage plot that our non-constant variance is affecting our model and requires standardization of the outlier residuals to correct the leverage they are exhibiting on the residual standard deviation. Only a slight adjustment would need to be made as our high residual is exhibiting relatively low leverage on our fitted model. Further examination of Cook&rsquo;s distances would tell you how far your predicted values for your data would move if your model was fitted without the  outliers you select (the plot points out some for you along with the Cook&rsquo;s distances).</p>
+
+                    <p>This work is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.</a></p>
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="https://twitter.com/CGRIIorg" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/cgriiorg" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/joeblankenship1" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; 2015-2018 Joe Blankenship</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="../../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="../../js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
