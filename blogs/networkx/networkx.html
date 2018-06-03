@@ -91,13 +91,13 @@
                     <h2 class="section-heading">Introduction</h2>
                     <p>Many of the most difficult fields of study are those involving the complex and dynamic relationships between people. Throughout history there have been many schools of thought and methodologies established to better understand who
                         we are and how that occurs due to numerous social relations over time and space.</p>
-                    <p>The discipline of social network analysis (SNA) has proven to be one of the most useful schools of thought in the study of social structures. The theories and methodologies within SNA have proven useful for political, economic, military,
+                    <p>The discipline of social network analysis (SNA) has proven to be one of the most useful schools of thought in the study of social structures. The theories and methodologies within SNA have proven useful for political, economic,
                         and cultural research, opening new areas of study through an array of innovative and adaptable techniques. More recently, SNA has proven extremely useful in the study of digital spaces such as social media networks, computer infrastructures,
                         and massive collections of heterogeneous data sets.</p>
 
                     <h2 class="section-heading">Getting Started</h2>
                     <p>We are now going to perform some basic social network analysis using Python. There are two libraries we are going to be focusing on for this: NetworkX and nxviz. <a href="https://networkx.github.io/" target="_blank">NetworkX</a> is
-                        a Python library built to study the networks. <a href="https://nxviz.readthedocs.io/en/latest/" target="_blank">nxviz</a> is a graph visualization library that builds from NetworkX. Together, these packages give us a great starting
+                        a Python library built to study networks. <a href="https://nxviz.readthedocs.io/en/latest/" target="_blank">nxviz</a> is a graph visualization library that builds from NetworkX. Together, these packages give us a great starting
                         point for analysis of social networks.</p>
 
                     <p>First, let's import our support libraries. I used Jupyter Lab for my analysis.</p>
@@ -117,6 +117,8 @@ padgm = pd.read_csv('data/padgm.csv', index_col=0)
 # show descriptive stats for the padgm dataframe
 padgm.describe(include='all')
 </pre>
+
+                    <h2>Graphing the Network</h2>
 
                     <p>After loading the data into a dataframe and reviewing the descriptive statistics, we can now begin to graph the marriage network.</p>
                     <pre>
@@ -150,7 +152,7 @@ list(graph_padgm.edges())[0:5]
 
                     <p>Once we're satisfied with the nodes and edges of our graph object, we can now create a graph visualization. We are going to use a force-directed gravity rendering for our graph with the nodes graduated by their degree within the network.</p>
                     <pre>
-# render the force-directed gravity graph
+# render the force-directed graph
 # arrow and labels will be shown
 # mulitple the value of each degree value by 100 from out node metadata
 # a new window will pop-up with the graph
@@ -237,7 +239,7 @@ padgb_arc.draw()
                     <span class="caption text-muted">ArcPlot of padgb dataset</span>
 
                     <p>Here again, we see the Medici with a high degree of centrality (connected to many of the same families) suggesting that there may be a strong connection between marriage and business. This assumption is further reinforced in examination of clusters that reoccur outside of the Medici's immediate relations (e.g., nodes 10, 3, and 4).</p>
-                    <p>NetworkX allows us to dig further into these networks, such as examining clusters and subgroups. But this has illustrated a basic, yet powerful example of how SNA can provide insight for our study of people and their connections.</p>
+                    <p>NetworkX allows us to dig further into these networks, such as examining clusters and subgroups. But this has illustrated a how SNA can provide insights for our study of people and their connections.</p>
                     <p>For further reading, I highly recommend Analyzing Social Networks by Borgatti, Everett, and Johnson.</p>
 
                     <h2>References</h2>
