@@ -8,15 +8,16 @@ xmlns:atom="http://www.w3.org/2005/Atom"
 
 <channel>
 <title>theJoeBlankenship News</title>
-<link>https://thejoeblankenship.com/</link>
+<link>https://thejoeblankenship.com/news</link>
 <atom:link href="https://thejoeblankenship.com/rss/thejoeblankenship_rss.xml" rel="self" type="application/rss+xml" />
 <description>Homepage of Joe Blankenship :)</description>
 <language>en</language>
 
 <item>
   <title>News for July</title>
-  <link>//thejoeblankenship.com/news</link>
-  <pubDate>Wed, 25 Jul 2018 22:05:00 GMT</pubDate>
+  <guid isPermaLink="true">https://thejoeblankenship.com/news</guid>
+  <link>https://thejoeblankenship.com/news</link>
+  <pubDate>Wed, 25 Jul 2018 17:05:00 +0500</pubDate>
   <description>[CDATA[ Latest update for July 2018! ]]</description>
 </item>
 </channel>
