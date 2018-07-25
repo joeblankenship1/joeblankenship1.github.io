@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+xmlns:content="http://purl.org/rss/1.0/modules/content/"
+xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:atom="http://www.w3.org/2005/Atom"
+>
+
+<channel>
+<title>theJoeBlankenship News</title>
+<link>https://thejoeblankenship.com/</link>
+<atom:link href="https://thejoeblankenship.com/rss/thejoeblankenship_rss.xml" rel="self" type="application/rss+xml" />
+<description>Homepage of Joe Blankenship :)</description>
+<language>en</language>
+
+<item>
+  <title>News for July</title>
+  <link>//thejoeblankenship.com/news</link>
+  <pubDate>Wed, 25 Jul 2018 22:05:00 GMT</pubDate>
+  <description>[CDATA[ Latest update for July 2018! ]]</description>
+</item>
+</channel>
+</rss>
