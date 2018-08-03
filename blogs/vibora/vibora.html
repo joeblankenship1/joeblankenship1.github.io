@@ -90,11 +90,28 @@
 
                     <p>I was working with Flask for my latest project when I became curious as to what other frameworks were out there. Looking at async frameworks, I found a lot of interesting solutions, but was blown away by what I found in Vibora. Despite it being a beta, its speeds and simplicity make it an impressice async alternative to Flask.</p>
 
-                    <h2 class="section-heading">heading</h2>
-                    <p>paragraph</p>
+                    <h2 class="section-heading">The Basics</h2>
+                    <p>As demonstrated in their documentation, setting up a basic app is fairly simple and very familiar.</p>
 
                     <pre>
-Code goes here
+from vibora import Vibora, Response
+
+app = Vibora()
+
+
+@app.route('/')
+async def home():
+    return Response(b'Hello world')
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
+</pre>
+
+                    <p></p>
+
+                    <pre>
+                        
 </pre>
 
                     <p>This work is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.</a></p>
