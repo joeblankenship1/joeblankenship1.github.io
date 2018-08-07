@@ -74,7 +74,7 @@
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="post-heading">
                         <h1>Vibora</h1>
-                        <h2 class="subheading">Faster Flask</h2>
+                        <h2 class="subheading">Faster Flask?</h2>
                         <span class="meta">Posted by <a href="../../about.html">Joe Blankenship</a> on August 1, 2018</span>
                     </div>
                 </div>
@@ -88,7 +88,7 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-                    <p>I was working with Flask for my latest project when I became curious as to what other frameworks were out there. Looking at async frameworks, I found a lot of interesting solutions, but was blown away by what I found in Vibora. Despite it being a beta, its speeds and simplicity make it an impressice async alternative to Flask.</p>
+                    <p>I was working with Flask for my latest project when I became curious as to what other frameworks were out there. Looking at async frameworks, I found a lot of interesting solutions, but was blown away by what I found in Vibora's claims. Despite it being a beta, its speeds and simplicity made it an impressive async alternative to Flask. However, the documentation and framework still have a ways to go.</p>
 
                     <h2 class="section-heading">The Basics</h2>
                     <p>As demonstrated in their documentation, setting up a basic app is fairly simple and very familiar.</p>
@@ -108,15 +108,37 @@ if __name__ == '__main__':
     app.run(debug=True)
 </pre>
 
-                    <p>Now let's say we want to work in some templates to support this app.</p>
+                    <p>I also found it handy for serving out static files.</p>
 
                     <pre>
-mkdir templates && cd templates
-
-touch index.html                        
+from vibora.static import StaticHandler
+​
+app = Vibora(
+    static=StaticHandler(
+        paths=['/data'],
+        host='data.thejoeblankenship.com',
+        url_prefix='/data',
+        max_cache_size=1 * 1024 * 1024
+    )
+)                       
 </pre>
 
-                    <p></p>
+                    <p>It even comes with some clever router strategies.</p>
+
+                    <pre>
+from vibora import Vibora
+from vibora.router import RouterStrategy
+​
+app = Vibora(router_strategy=RouterStrategy.STRICT)
+</pre>
+
+                    <h2 class="section-heading">Issues</h2>
+
+                    <p>Data validation and event handling also seem to work well, but documentation and functional examples of templating and testing fall short. Additionally, there is not a solid way to deploy a Vibora app outside of using docker.</p>
+
+                    <h2 class="section-heading">Conclusion</h2>
+
+                    <p>It's very exciting to see an async framework with such promise, but it has a ways to go before it can gain the popularity of Flask or Django (though slow as they may be). I look forward to coming back and revisting this framework and blog post in the future.</p>
 
                     <p>This work is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.</a></p>
 
