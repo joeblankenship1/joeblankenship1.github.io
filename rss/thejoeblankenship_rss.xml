@@ -10,8 +10,16 @@ xmlns:atom="http://www.w3.org/2005/Atom"
 <title>theJoeBlankenship News</title>
 <link>https://thejoeblankenship.com/news</link>
 <atom:link href="https://thejoeblankenship.com/rss/thejoeblankenship_rss.xml" rel="self" type="application/rss+xml" />
-<description>Homepage of Joe Blankenship :)</description>
+<description>Homepage of Joe Blankenship ¯\_(ツ)_/¯</description>
 <language>en</language>
+
+<item>
+  <title>Moving Pictures: Animated GIFs in Linux</title>
+  <guid isPermaLink="true">https://thejoeblankenship.com/blogs/animated_gif/animated_gif</guid>
+  <link>https://thejoeblankenship.com/blogs/animated_gif/animated_gif</link>
+  <pubDate>Tue, 20 Oct 2018 17:00:00 +0500</pubDate>
+  <description>Quick blog on generating animated gifs with ffmpeg</description>
+</item>
 
 <item>
   <title>Black Markets and Social Capital: An Analysis of Bitcoin and Silk Road</title>
