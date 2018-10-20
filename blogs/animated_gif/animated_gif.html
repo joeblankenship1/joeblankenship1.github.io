@@ -88,19 +88,50 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-                    <p>This is a quickie blog as I'm currently slammed with work. However, I should have a nice write-up from my Python Immersion Course in December. :)</p>
+                    <p>This is a quickie blog as I'm currently slammed with work. However, I should have a nice write-up from my Python Immersion Course in November. :)</p>
 
                     <h2 class="section-heading">Making Pictures Move</h2>
-                    <p>paragraph</p>
+                    <p>I recently delivered a reveal.js-based presentation at the NACIS annual conference. I love the simplicity of this form of presentation, but it is not without some challenges. I have had issues with embedding large or complicated, interactive content from other websites and I fully expect this to be the case given the static nature of these websites. So in order to maintain a minimalist approach to my slides, but to have some sort of activity I decided to sample the content using animated gifs.</p>
+
+                    <p>There are several programs that can generate animated gifs, but not many on Linux. This is where my journey began.</p>
+
+                    <p>After a little searching, I found references to a library named ffmpeg which allows me to convert videos into animated gifs. This process was more simple than I thought it would be.</p>
+
+                    <h2 class="section-heading">Generating Animated GIFs</h2>
+                    <p>First we have to make sure ffmeg is installed on your system:</p>
 
                     <pre>
-Code goes here
+ffmpeg -version
 </pre>
+                    <p>You should see an output that states the current installed version. If not, then install ffmpeg:</p>
 
-                    <p>
-                        <b>References</b><br>
-                        reference<br>
-                    </p>
+                    <pre>
+sudo apt-get install -y ffmpeg
+</pre>
+                    <p>Once you’ve install ffmpeg, run the version check again to verify the install.</p>
+
+                    <p>We are now ready to convert some videos. I use RecordMyDesktop to make videos which outputs an ogv file. Once you have a functional ogv file, we can convert it to an mp4 video file:</p>
+
+                    <pre>
+ffmpeg -i output.ogv -f mp4 output.mp4
+</pre>
+                    <p>Our input is the ogv file, the file type is mp4, and then we name our output file. We are now ready to generate an animated gif. However, before we do this, we have the ability to generate a HD gif by using a sampled color palette:</p>
+
+                    <pre>
+ffmpeg -y -i output.mp4 -vf fps=10,scale=800:-1:flags=lanczos,palettegen palette.png
+</pre>
+                    <p>We identify the mp4 file we just generated, define the frames per second, define the scale of the video frames, and pass information to generated the palette file in png format.</p>
+
+                    <p>Once a palette image is generated, we are now ready to create a HD animated gif:</p>
+
+                    <pre>
+ffmpeg -i output.mp4 -i palette.png -filter_complex "fps=10,scale=800:-1:flags=lanczos[x];[x][1:v]paletteuse" output.gif
+</pre>
+                    <p>We once again call our mp4 file along with the palette file, define the formatting variables, and name our final animated gif.</p>
+
+                    <p>In the end, you should end up with a gif that resembles your original video.</p>
+
+                    <img class="img-responsive center-block" src="img/bitnodes.gif" alt="Oops!">
 
                     <p>This work is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.</a></p>
 
