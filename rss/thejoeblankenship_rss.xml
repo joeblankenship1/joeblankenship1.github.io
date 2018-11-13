@@ -14,19 +14,27 @@ xmlns:atom="http://www.w3.org/2005/Atom"
 <language>en</language>
 
 <item>
+  <title>Teaching Python: Basics to Data Science</title>
+  <guid isPermaLink="true">https://thejoeblankenship.com/blogs/python_course/python_course</guid>
+  <link>https://thejoeblankenship.com/blogs/python_course/python_course</link>
+  <pubDate>Tue, 13 Nov 2018 17:00:00 +0500</pubDate>
+  <description>Blog on issues related to making an effective Python couse for data scientists</description>
+</item>
+
+<item>
+  <title>News for November</title>
+  <guid isPermaLink="true">https://thejoeblankenship.com/news</guid>
+  <link>https://thejoeblankenship.com/news</link>
+  <pubDate>Wed, 13 Nov 2018 17:05:00 +0500</pubDate>
+  <description>Latest update for November 2018!</description>
+</item>
+
+<item>
   <title>Moving Pictures: Animated GIFs in Linux</title>
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/animated_gif/animated_gif</guid>
   <link>https://thejoeblankenship.com/blogs/animated_gif/animated_gif</link>
   <pubDate>Tue, 20 Oct 2018 17:00:00 +0500</pubDate>
   <description>Quick blog on generating animated gifs with ffmpeg</description>
-</item>
-
-<item>
-  <title>News for October</title>
-  <guid isPermaLink="true">https://thejoeblankenship.com/news</guid>
-  <link>https://thejoeblankenship.com/news</link>
-  <pubDate>Wed, 20 Oct 2018 17:05:00 +0500</pubDate>
-  <description>Latest update for October 2018!</description>
 </item>
 
 <item>
