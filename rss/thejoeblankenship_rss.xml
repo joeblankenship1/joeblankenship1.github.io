@@ -22,6 +22,14 @@ xmlns:atom="http://www.w3.org/2005/Atom"
 </item>
 
 <item>
+  <title>The Slow and the Soporific: My Month Without High-speed Internet</title>
+  <guid isPermaLink="true">https://thejoeblankenship.com/blogs/slow_internet/slow_internet</guid>
+  <link>https://thejoeblankenship.com/blogs/slow_internet/slow_internet</link>
+  <pubDate>Tue, 23 Feb 2019 17:00:00 +0500</pubDate>
+  <description>Blog on rationalizing digital minimalism with reality of digital divide around the world.</description>
+</item>
+
+<item>
   <title>Sanic: Going faster with Async Web Development</title>
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/sanic/sanic</guid>
   <link>https://thejoeblankenship.com/blogs/sanic/sanic</link>
