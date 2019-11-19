@@ -92,5 +92,45 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <pubDate>Tue, 31 May 2018 17:00:00 +0500</pubDate>
   <description>Social Network Analysis in Python</description>
 </item>
+
+<item>
+  <title>Multiple Linear Regression: Foreclosure Analysis in R</title>
+  <guid isPermaLink="true">https://thejoeblankenship.com/blogs/mlr_r/mlr_r</guid>
+  <link>https://thejoeblankenship.com/blogs/mlr_r/mlr_r</link>
+  <pubDate>Tue, 29 Apr 2018 17:00:00 +0500</pubDate>
+  <description>Foreclosure Analysis in R</description>
+</item>
+
+<item>
+  <title>The Bitcoin Labor Economy: Global Footprint and Issues of Access</title>
+  <guid isPermaLink="true">https://thejoeblankenship.com/blogs/bitcoin_labor/bitcoin_labor</guid>
+  <link>https://thejoeblankenship.com/blogs/bitcoin_labor/bitcoin_labor</link>
+  <pubDate>Tue, 28 Mar 2018 17:00:00 +0500</pubDate>
+  <description>Global Footprint and Issues of Access</description>
+</item>
+
+<item>
+  <title>Design for the Hopeless: Experiences with Front-End Development</title>
+  <guid isPermaLink="true">https://thejoeblankenship.com/blogs/frontend_dev/frontend_dev</guid>
+  <link>https://thejoeblankenship.com/blogs/frontend_dev/frontend_dev</link>
+  <pubDate>Tue, 28 Feb 2018 17:00:00 +0500</pubDate>
+  <description>Experiences with Front-End Development</description>
+</item>
+
+<item>
+  <title>Algorithmic Governance: Beyond Blockchains</title>
+  <guid isPermaLink="true">https://thejoeblankenship.com/blogs/algo_gov/algo_gov</guid>
+  <link>https://thejoeblankenship.com/blogs/algo_gov/algo_gov</link>
+  <pubDate>Tue, 20 Jan 2018 17:00:00 +0500</pubDate>
+  <description>Thoughts of Algorithmic Governance</description>
+</item>
+
+<item>
+  <title>Ethics in Data Science: Bias and Mitigation</title>
+  <guid isPermaLink="true">https://thejoeblankenship.com/blogs/data_ethics/data_ethics</guid>
+  <link>https://thejoeblankenship.com/blogs/data_ethics/data_ethics</link>
+  <pubDate>Tue, 01 Jan 2018 17:00:00 +0500</pubDate>
+  <description>Ethics in Data Science</description>
+</item>
 </channel>
 </rss>
