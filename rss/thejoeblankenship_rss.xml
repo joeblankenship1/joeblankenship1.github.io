@@ -76,5 +76,21 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <pubDate>Tue, 07 Aug 2018 17:00:00 +0500</pubDate>
   <description>Overview of Vibora Web Framework</description>
 </item>
+
+<item>
+  <title>Anonymous: Anarchist Geographies of Hacktivism</title>
+  <guid isPermaLink="true">https://thejoeblankenship.com/blogs/anonymous/anonymous</guid>
+  <link>https://thejoeblankenship.com/blogs/anonymous/anonymous</link>
+  <pubDate>Tue, 28 Jun 2018 17:00:00 +0500</pubDate>
+  <description>Anarchist Geographies of Hacktivism</description>
+</item>
+
+<item>
+  <title>NetworkX: Social Network Analysis in Python</title>
+  <guid isPermaLink="true">https://thejoeblankenship.com/blogs/networkx/networkx</guid>
+  <link>https://thejoeblankenship.com/blogs/networkx/networkx</link>
+  <pubDate>Tue, 31 May 2018 17:00:00 +0500</pubDate>
+  <description>Social Network Analysis in Python</description>
+</item>
 </channel>
 </rss>
