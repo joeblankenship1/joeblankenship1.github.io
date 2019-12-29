@@ -95,6 +95,7 @@
                     <h2 class="section-heading">How It Works</h2>
                     <p>The manner in which this Python-based library works is fairly simple, yet I will elaborate on how the source code takes Bitcoin transaction and converts them into graph objects for analysis.</p>
                     <pre>
+# import the library
 from bitcoin_graph import bitcoin_graph
 
 # you can input a single wallet address or a list of dictionaries with metadata
@@ -109,11 +110,12 @@ graph_object = bitcoin_graph.bitcoin_graph(node_data, edge_data)
 # you can then export to one of several formats
 bitcoin_graph.bitcoin_data_export(graph_object, 'graphml', 'filename')
 </pre>
-
+                    <p>You can export to several formats. The below image is a view of the graphml file output using Cytoscape.</p>
                     <a href="img/genesis.jpg">
                         <img class="img-responsive" src="img/genesis.jpg" alt="Oops!">
                     </a>
                     <span class="caption text-muted">A network object for the Bitcoin genesis block</span>
+                    <p></p>
 
                     <h2 class="section-heading">Making Sense of Transactions</h2>
                     <p>paragraph</p>
