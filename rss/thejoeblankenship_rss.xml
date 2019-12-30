@@ -22,6 +22,14 @@ xmlns:atom="http://www.w3.org/2005/Atom"
 </item>
 
 <item>
+  <title>Bitcoin Networks: Connecting Transactions to Value</title>
+  <guid isPermaLink="true">https://thejoeblankenship.com/blogs/bitcoin_graph/bitcoin_graph</guid>
+  <link>https://thejoeblankenship.com/blogs/bitcoin_graph/bitcoin_graph</link>
+  <pubDate>Sun, 30 Dec 2019 17:00:00 +0500</pubDate>
+  <description>Blog on using my bitcoin_graph Python library with a use case.</description>
+</item>
+
+<item>
   <title>Fletcher Keyboards: DIY Ergonomics at Its Best</title>
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/fletcher_keyboard/fletcher_keyboard</guid>
   <link>https://thejoeblankenship.com/blogs/fletcher_keyboard/fletcher_keyboard</link>
