@@ -140,5 +140,93 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <pubDate>Tue, 01 Jan 2018 17:00:00 +0500</pubDate>
   <description>Ethics in Data Science</description>
 </item>
+
+<item>
+  <title>Sharing Economy: Brief Thoughts</title>
+  <guid isPermaLink="true">https://thejoeblankenship.com/blogs/sharing_economy/sharing_economy</guid>
+  <link>https://thejoeblankenship.com/blogs/sharing_economy/sharing_economy</link>
+  <pubDate>Tue, 28 Dec 2017 17:00:00 +0500</pubDate>
+  <description>Opinions on the Sharing Economy</description>
+</item>
+
+<item>
+  <title>Net Neutrality and Internet Freedom: Meshnets, Blockchains, Encryption, Alternatives</title>
+  <guid isPermaLink="true">https://thejoeblankenship.com/blogs/net_neutral/net_neutral</guid>
+  <link>https://thejoeblankenship.com/blogs/net_neutral/net_neutral</link>
+  <pubDate>Tue, 20 Nov 2017 17:00:00 +0500</pubDate>
+  <description>Thoughts on end of Net Neutrality</description>
+</item>
+
+<item>
+  <title>Conceptualizing Code Part 2: Modules and Eve</title>
+  <guid isPermaLink="true">https://thejoeblankenship.com/blogs/concept_code/concept_code_p2</guid>
+  <link>https://thejoeblankenship.com/blogs/concept_code/concept_code_p2</link>
+  <pubDate>Tue, 16 Nov 2017 17:00:00 +0500</pubDate>
+  <description>Part 2 of the Conceptualizing Code Series</description>
+</item>
+
+<item>
+  <title>Conceptualizing Code Part 1: Python, PDFs, MongoDB</title>
+  <guid isPermaLink="true">https://thejoeblankenship.com/blogs/concept_code/concept_code_p1</guid>
+  <link>https://thejoeblankenship.com/blogs/concept_code/concept_code_p1</link>
+  <pubDate>Tue, 28 Sep 2017 17:00:00 +0500</pubDate>
+  <description>Part 1 of the Conceptualizing Code Series</description>
+</item>
+
+<item>
+  <title>FairCoin: People, Cooperation, Challenges</title>
+  <guid isPermaLink="true">https://thejoeblankenship.com/blogs/faircoin/faircoin</guid>
+  <link>https://thejoeblankenship.com/blogs/faircoin/faircoin</link>
+  <pubDate>Tue, 20 Aug 2017 17:00:00 +0500</pubDate>
+  <description>An overview of the FairCoin economic system</description>
+</item>
+
+<item>
+  <title>Recover from an Office Disaster</title>
+  <guid isPermaLink="true">https://thejoeblankenship.com/blogs/docx_recovery/docx_recovery</guid>
+  <link>https://thejoeblankenship.com/blogs/docx_recovery/docx_recovery</link>
+  <pubDate>Tue, 22 Jun 2017 17:00:00 +0500</pubDate>
+  <description>A short write-up on recovering docx files</description>
+</item>
+
+<item>
+  <title>GeoPy and Folium</title>
+  <guid isPermaLink="true">https://thejoeblankenship.com/blogs/geopy_folium/geopy_folium</guid>
+  <link>https://thejoeblankenship.com/blogs/geopy_folium/geopy_folium</link>
+  <pubDate>Tue, 11 May 2017 17:00:00 +0500</pubDate>
+  <description>Making maps with geopy and folium</description>
+</item>
+
+<item>
+  <title>A Data Science Community: Lessons Learned as a Meetup Organizer</title>
+  <guid isPermaLink="true">https://thejoeblankenship.com/blogs/organizer_lessons/organizer_lessons</guid>
+  <link>https://thejoeblankenship.com/blogs/organizer_lessons/organizer_lessons</link>
+  <pubDate>Tue, 01 May 2017 17:00:00 +0500</pubDate>
+  <description>A write-up on running a meetup group</description>
+</item>
+
+<item>
+  <title>Cyborg Natures: Urban Metabolisms and Technological Abstraction of Nature</title>
+  <guid isPermaLink="true">https://thejoeblankenship.com/blogs/cyborgnatures/cyborgnatures</guid>
+  <link>https://thejoeblankenship.com/blogs/cyborgnatures/cyborgnatures</link>
+  <pubDate>Tue, 01 Aug 2016 17:00:00 +0500</pubDate>
+  <description>Political ecology of technologically growing urban spaces</description>
+</item>
+
+<item>
+  <title>Systemic Digital Divide: Analysis of FCC Internet Access Services Data</title>
+  <guid isPermaLink="true">https://thejoeblankenship.com/blogs/FCC_digitaldivide/fcc_digitaldivide</guid>
+  <link>https://thejoeblankenship.com/blogs/FCC_digitaldivide/fcc_digitaldivide</link>
+  <pubDate>Tue, 01 June 2016 17:00:00 +0500</pubDate>
+  <description>Analysis of persistent geographies of technological divide</description>
+</item>
+
+<item>
+  <title>Wardriving the Digital Divide: Civic Hacking Techniques in Geographic Data Science</title>
+  <guid isPermaLink="true">https://thejoeblankenship.com/blogs/wardriving/wardriving</guid>
+  <link>https://thejoeblankenship.com/blogs/wardriving/wardriving</link>
+  <pubDate>Tue, 11 May 2016 17:00:00 +0500</pubDate>
+  <description>Analysis of signal-associated digital divide indicators</description>
+</item>
 </channel>
 </rss>
