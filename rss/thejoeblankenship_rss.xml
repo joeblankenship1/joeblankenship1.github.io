@@ -10,6 +10,11 @@ xmlns:atom="http://www.w3.org/2005/Atom"
 <title>theJoeBlankenship News</title>
 <link>https://thejoeblankenship.com/news</link>
 <atom:link href="https://thejoeblankenship.com/rss/thejoeblankenship_rss.xml" rel="self" type="application/rss+xml" />
+<image>
+    <url>https://thejoeblankenship.com/rss/tjb_rss.jpg</url>
+    <title>TheJoeBlankenship</title>
+    <link><![CDATA[https://thejoeblankenship.com]]></link>
+</image>
 <description>Homepage of Joe Blankenship ¯\_(ツ)_/¯</description>
 <language>en</language>
 
