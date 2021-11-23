@@ -89,18 +89,255 @@
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
                     <h2 class="section-heading">Introduction</h2>
-                    <p></p>
+                    <p>For most data analysts, data engineers, and data scientists using Python, a simple import and few commands in IPython or Jupyter can help quickly characterize the data. This characterization is often very concise and technical which is great for enabling technical team members to communicate on data processing and delivery tasks.</p>
+                    <p>However, it is increasingly important to include a broad spectrum of customer and expert insights into our data analysis and engineering tasks: many of these people being non-technical persons with limited exposure to interpreting code and basic data visulizations. As a result, inclusion of non-technical personnel for a project requires a different type of collaborative analysis environment.</p>
+                    <p>I recently built a demonstration in Streamlit for signals data and it dawned on my that these type of dashboard environments are great for providing a collaborative exploratory data analysis (EDA) environment. For technical users, it makes you take scripts you would usually put into a notebook into a more structured <code>.py</code> file. This is preferred as this will often be what is needed by data management teams to implements specific ETL tasks. For non-technical users, this environment provides a simple, interactive tools with easy buttonology to explore dimensions and factors in the data. This allows expert insights to enhance the ETL process and the resultant metadata and documentation.</p>
+                    <p>So let's take a look on how to quickly and painlessly build a usable dashboard.</p>
 
                     <h2 class="section-heading">Building the Dashboard</h2>
-                    <p>paragraph</p>
-
+                    <p>First, create a virtual environment and then install these libraries:</p>
                     <pre>
-Code goes here
+pip install plotly pandas streamlit
 </pre>
+                    <p>You may also want to install jupyter or jupyter lab if you plan to do some preliminary EDA before creating you dataframe function.</p>
+                    <p>Now, let's create a file named <code>wifi_dash.py</code> and open in an editor or your choice. We'll first import our libraries we just installed:</p>
+                    <pre>
+import pandas as pd
+import plotly.express as px
+import streamlit as st
+</pre>
+                    <p>We can then declare our page configuration for the dashboard:</p>
+                    <pre>
+st.set_page_config(page_title="IoT Dashboard",
+                   age_icon=":bar_chart:",
+                   layout="wide")
+</pre>
+                    <p>Here we're declaring the page title, the favicon, and the page layout. Now let's get some data in here:</p>
+                    <pre>
+@st.cache
+def get_data(data):
+    wifi = pd.read_json(data)
+    wifi_signals = wifi['results'].apply(pd.Series)
+    wifi_signals.rename(columns={'trilat':'lat', 'trilong':'lon'}, inplace=True)
+    wifi_signals['year'] = pd.to_datetime(wifi_signals['lastupdt'], format="%Y-%m-%d").dt.year
+    wifi_signals['count'] = 1
+    wifi_signals['dow'] = pd.to_datetime(wifi_signals['lastupdt']).dt.dayofweek
+    return wifi_signals
+
+df = get_data("data/wigle_tpa_wifi.json")
+</pre>
+                    <p>I chose to use WiGLE WiFi data form my dashboard, but you can adapt this workflow to the data you need to explore.</p>
+                    <p>Okay, let's break this insanity down:</p>
+                    <ul>
+                        <li>Before the function, we'll use the Streamlit decorator <code>@st.cache</code> that tells Streamlit to locally cache the results of the function.</li>
+                        <li>Then we'll declare our dataframe function with a single argument for the input data source (add more if your data ingest is more complex).</li>
+                        <li>We declare our initial data object using Pandas to read a JSON file.</li>
+                        <li>The next 5 steps perform data transformation we'll need for dashboard functionality.</li>
+                        <li>We then return the processed dataframe out of the function.</li>
+                        <li>Finally, we assign the function output to the variable <code>df</code>, inputing our raw data file.</li>
+                    </ul>
+                    <p>Okay, we are now ready to start creating the dashboard. First, let's create our sidebar.</p>
+                    <pre>
+st.sidebar.header("Filter Here:")
+city = st.sidebar.multiselect(
+        "Select the City:",
+        options=df["city"].unique(),
+        default=df["city"].unique()
+        )
+
+road = st.sidebar.multiselect(
+        "Select the Road:",
+        options=df["road"].unique(),
+        default=df["road"].unique()
+        )
+
+postalcode = st.sidebar.multiselect(
+        "Select the Zip Code:",
+        options=df["postalcode"].unique(),
+        default=df["postalcode"].unique()
+        )
+
+housenumber = st.sidebar.multiselect(
+        "Select the House Number:",
+        options=df["housenumber"].unique(),
+        default=df["housenumber"].unique()
+        )
+
+year = st.sidebar.multiselect(
+        "Select the Year:",
+        options=df["year"].unique(),
+        default=df["year"].unique()
+        )
+
+encryption = st.sidebar.multiselect(
+        "Select the Encyption:",
+        options=df["encryption"].unique(),
+        default=df["encryption"].unique()
+        )
+
+ssid = st.sidebar.multiselect(
+        "Select the SSID:",
+        options=df["ssid"].unique(),
+        default=df["ssid"].unique()
+        )
+
+df_selection = df.query(
+        "city == @city & road == @road & postalcode == @postalcode & housenumber == @housenumber & year == @year & encryption == @encryption & ssid == @ssid"
+        )             
+</pre>
+                    <p>So here's what happened:</p>
+                    <ul>
+                        <li>We use <code>st.sidebar.header</code> to declare our sidebar title.</li>
+                        <li>Then we use <code>st.sidebar.multiselect</code> to declare several variables as selection options that will each be populated with their unique values found in the data field.</li>
+                        <li>After each variable (e.g., city, year, encryption, etc.), we declare the <code>df_selection</code> variable which queries our dataframe object using the Pandas query method.</li>
+                    </ul>
+                    <p>You can now go ahead and do a quick test run of the streamlit app! Below the df_selection object, type:</p>
+                    <pre>
+st.dataframe(df_selection)
+</pre>
+                    <p>Then, inside your active virtual environment, execute:</p>
+                    <pre>
+streamlit run wifi_dash.py
+</pre>
+                    <p>Alright! Now we're cooking! You should see the dataframe and a sidebar that when changed, changes the rows based on the remaining selections.</p>
+                    <p>Let's create our main dashboard starting with the main title:</p>
+                    <pre>
+st.title("IoT Dashboard - WiFi")
+st.markdown("##")
+st.markdown("""---""")
+</pre>
+                    <p>Now let's create a section for three descriptive data variables:</p>
+                    <pre>
+unique_ssid = len(df_selection['ssid'].value_counts())
+unique_house = len(df_selection['housenumber'].value_counts())
+unique_roads = len(df_selection['road'].value_counts())
+</pre>
+                    <p>After declaring these three, lets put each into its own column using <code>st.columns</code>:</p>
+                    <pre>
+left_column, middle_column, right_column = st.columns(3)
+with left_column:
+    st.subheader("Unique SSIDs:")
+    st.subheader(f"{unique_ssid:,}")
+with middle_column:
+    st.subheader("Unique House Numbers Found")
+    st.subheader(f"{unique_house:,}")
+with right_column:
+    st.subheader("Unique Roads")
+    st.subheader(f"{unique_roads:,}")
+
+st.markdown("""---""")
+</pre>
+                    <p>Using with statements, we pushed our variables into its column as defined by its column name. We also get to declare a title and it's interactive variable using st.subheader and a little f-string awesomeness. Now if we view the dashboard, you should see the title and a three-column stats section.</p>
+                    <p>Now let's create a charts section:</p>
+                    <pre>
+st.title("Charts")
+st.markdown("##")
+</pre>
+                    <p>After the section title, let create a chart:</p>
+                    <pre>
+signals_per_year = df_selection.groupby(by=['year']).sum()[['count']]
+fig_year_signals = px.bar(
+    signals_per_year,
+    x=signals_per_year.index,
+    y='count',
+    title='<b>Signals per Year</b>',
+    color_discrete_sequence=["#0083B8"] * len(signals_per_year),
+    template="plotly_white",
+    )
+fig_year_signals.update_layout(
+    xaxis=dict(tickmode="linear"),
+    plot_bgcolor="rgba(0,0,0,0)",
+    yaxis=(dict(showgrid=False)),
+)                 
+</pre>
+                    <p>So here is what we did:</p>
+                    <ul>
+                        <li>First, we group established that we wanted to see signals per year within our data selection.</li>
+                        <li>We then use the Pandas groupby method to build a signals per year Series.</li>
+                        <li>This series is then used to create a Plotly bar chart.</li>
+                        <li>We then update this chart object with some custom styling.</li>
+                    </ul>
+                    <p>Let's create a second chart using the same method:</p>
+                    <pre>
+signals_per_dow = df_selection.groupby(by=['dow']).sum()[['count']]
+fig_dow_signals = px.bar(
+    signals_per_dow,
+    x=signals_per_dow.index,
+    y='count',
+    title='<b>Signals per Day of Week (Mon = 0, Sun = 6)</b>',
+    color_discrete_sequence=["#0083B8"] * len(signals_per_year),
+    template="plotly_white",
+    )
+fig_dow_signals.update_layout(
+    xaxis=dict(tickmode="linear"),
+    plot_bgcolor="rgba(0,0,0,0)",
+    yaxis=(dict(showgrid=False)),
+)
+</pre>
+                    <p>We can now take our two charts and put them side-by-side, similar to how we created the stats section:</p>
+                    <pre>
+left_column, right_column = st.columns(2)
+left_column.plotly_chart(fig_year_signals, use_container_width=True)
+right_column.plotly_chart(fig_dow_signals, use_container_width=True)
+
+st.markdown("""---""")
+</pre>
+                    <p>Notice how we used the plotly_chart method within st.columns which help with size and style of the charts as we place them in the dashboard.</p>
+                    <p>Whew! Now it's looking like a real dashboard... but we can do more!</p>
+                    <p>WiGLE comes with geospatial X,Y coordinates, so let's create a map!</p>
+                    <pre>
+st.title("Map of Filtered Signals")
+st.markdown("##")
+st.map(df_selection)
+
+st.markdown("""---""")
+</pre>
+                    <p>It's really that simple to create a dot map in Streamlit.</p>
+                    <p>Finally, let's move our raw dataframe view from above to the bottom of the dashboard: we want our visualizations to take center stage.</p>
+                    <pre>
+st.title("Raw Data")
+st.markdown("##")
+st.dataframe(df_selection)
+
+st.markdown("""---""")
+</pre>
+                    <p>That's pretty much it! If you want to add some additional styling, you can create a <code>.streamlit</code> folder and then a <code>config.toml</code> file with custom styling:</p>
+                    <pre>
+[theme]
+# Primary accent color for interactive elements.
+primaryColor = "#E694FF"
+
+# Background color for the main content area.
+backgroundColor = "#00172B"
+
+# Background color used for the sidebar and most interactive widgets.
+secondaryBackgroundColor = "#0083B8"
+
+# Color used for almost all text.
+textColor = "#FFF"
+
+# Font family for all text in the app, except code blocks. One of "sans serif", "serif", or "monospace".
+# Default: "sans serif"
+font = "sans serif"
+</pre>
+                    <p>We can then go back to our wifi_dash.py file and add this to the end:</p>
+                    <pre>
+hide_st_style = """
+                <style>
+                #MainMenu {visibility: hidden;}
+                footer {visibility: hidden;}
+                header {visibility: hidden;}
+                </style>
+                """
+
+st.markdown(hide_st_style, unsafe_allow_html=True)
+</pre>
+                    <p>So this is now running locally, but what if you want to share it?!</p>
+                    <p>Streamlit offers a "free" deployment solution through their website to host up to three dashboards.</p>
 
                     <h2 class="section-heading">What We Did</h2>
-                    <p>paragraph</p>
-
+                    <p>As you can see, this is much easier to give to a non-technical person than a jupyter notebook or a Python script: individuals or groups can view this dashboard, ask questions, and refine their data models collaboratively. Once changes are identifies, changes can easily be made and the dashboard updated quickly.</p>
+                    <p>In terms of data management (my current application space for this), I can generate interactive dashboards as part of the initial ETL process by templating this process for auto-generation of EDA tooling for data owners and data steward for nuanced requirements generation (a blog for another time perhaps :D ).</p>
 
                     <p>
                         <b>References</b>
