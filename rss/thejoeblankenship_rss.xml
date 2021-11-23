@@ -27,6 +27,14 @@ xmlns:atom="http://www.w3.org/2005/Atom"
 </item>
 
 <item>
+  <title>Streamlit: Collaborative EDA Made Simple</title>
+  <guid isPermaLink="true">https://thejoeblankenship.com/blogs/streamlit/streamlit</guid>
+  <link>https://thejoeblankenship.com/blogs/streamlit/streamlit</link>
+  <pubDate>Tue, 23 Nov 2021 17:00:00 +0500</pubDate>
+  <description>Blog on using Streamlit dashboards as a way to engage in collaborative EDA for inter-team communication.</description>
+</item>
+
+<item>
   <title>Friction and Decay: In a time of COVID-19</title>
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/friction/friction</guid>
   <link>https://thejoeblankenship.com/blogs/friction/friction</link>
