@@ -94,11 +94,28 @@
                     <p>I'm surprised I haven't done anything on census data, given my background. However, I think it's well overdue with changes to census data access and a new decennial census.</p>
                     <p>This post is the first of a multi-part blog series on census data, going through understanding and accessing US census data to analyze it for real-world impact. So let's get into it!</p>
 
-                    
+                    <h3>What is Census Data?</h3>
+                    <p>A census is the collection of information about every member of a population. In the US, this data collection includes age, gender, ethnicity, and household income, representing people at varying scales, from the national to the block level. The census also includes Native American areas and US territories.</p>
                     <a href="img/1.jpg">
                         <img class="img-responsive" src="img/census_hierarchy.png" alt="Oops!">
                     </a>
-                    <span class="caption text-muted">US Census Hierarchy</span>
+                    <span class="caption text-muted"><a href="https://mcdc.missouri.edu/geography/sumlevs/" target="_blank" rel="noopener noreferrer">US Census Hierarchy</a></span>
+                    <p>The US Census, in particular, is collected in a few different ways. The first and most notable is the decennial census collected every ten years. The Census Bureau conducts community surveys every one, three, and five years between decennial census periods, capturing different types of estimates.</p>
+                    <p>A national census is critical as governments use it to plan public services, emergency planning, and redefine voting districts, to name a few. The private sector uses the census for marketing and business planning, estimating real estate, retail management, calculating insurance rates, financial planning, and more. This process is especially true in metropolitan (e.g., more densely populated) and micropolitan (e.g., more sparsely populated) urban areas.</p>
+                    <p>For more information on the census, I urge you to visit the <a href="https://www.census.gov/" target="_blank" rel="noopener noreferrer">US Census Bureau website</a>, which contains volumes of valuable and essential information. However, there is one crucial element about the data we need to discuss: geographic identifiers.</p>
+
+                    <h3>GEOID</h3>
+                    <p>The US Census data encompasses several data engineering factors: complex schema covering several dimensions; varying scales of geographic information within a strict hierarchy; connection to other data collections using varying data types. <a href="https://www.census.gov/programs-surveys/geography/guidance/geo-identifiers.html" target="_blank" rel="noopener noreferrer">Geographic identifiers (GEOIDs)</a> are unique numeric codes used to track dimensional measures across varying scales within the census. The codes is also the connective fabric between the census and other supplementary data such as TIGER, ANSI, DoE, and USGS data products.</p>
+                    <p>Specific to the US census data we’ll be using, the block code 482012231001050 follows this hierarchical pattern:</p>
+                    <ul>
+                        <li>48 for the state</li>
+                        <li>201 for the county</li>
+                        <li>223100 for the census tract</li>
+                        <li>1 for the block group</li>
+                        <li>050 for the block</li>
+                    </ul>
+                    <p>There are variations to this such as places, but these changes are identifiable in the schema for place data. The US Census data explorer helps you select and identify the GEOID structures when you search for and download the data (often captured in a metadata file).</p>
+                    <p>And with that, let’s go grab some data!</p>
 
                     <h2 class="section-heading">Accessing Data</h2>
                     <p></p>
