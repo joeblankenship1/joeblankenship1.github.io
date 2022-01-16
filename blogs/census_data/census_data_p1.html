@@ -96,7 +96,7 @@
 
                     <h3>What is Census Data?</h3>
                     <p>A census is the collection of information about every member of a population. In the US, this data collection includes age, gender, ethnicity, and household income, representing people at varying scales, from the national to the block level. The census also includes Native American areas and US territories.</p>
-                    <a href="img/1.jpg">
+                    <a href="img/census_hierarchy.png">
                         <img class="img-responsive" src="img/census_hierarchy.png" alt="Oops!">
                     </a>
                     <span class="caption text-muted"><a href="https://mcdc.missouri.edu/geography/sumlevs/" target="_blank" rel="noopener noreferrer">US Census Hierarchy</a></span>
@@ -122,8 +122,51 @@
                     <p>Let’s start with the old-fashion way.</p>
 
                     <h3>Downloading Data</h3>
+                    <p>For traditional GIS analysts using ESRI or QGIS, this is perhaps the most common path to access and download census data (this may even be true for data analysts and data scientists). We start by using the <a href="https://data.census.gov/cedsci/" target="_blank" rel="noopener noreferrer">Census Data Explorer</a>.</p>
+                    <a href="img/census_data_explore.png">
+                        <img class="img-responsive" src="img/census_data_explore.png" alt="Oops!">
+                    </a>
+                    <span class="caption text-muted"><a href="https://data.census.gov/cedsci/" target="_blank" rel="noopener noreferrer">US Census Data Explorer</a></span>
+                    <p>This is a great website that helps you understand the available data and the Census Bureau’s supporting utilities. You’ll want to click on Advanced Search underneath the search box as this is the real power of their explorer.</p>
+                    <a href="img/census_data_explore_adv.png">
+                        <img class="img-responsive" src="img/census_data_explore_adv.png" alt="Oops!">
+                    </a>
+                    <span class="caption text-muted"><a href="https://data.census.gov/cedsci/advanced" target="_blank" rel="noopener noreferrer">US Census Advanced Data Search</a></span>
+                    <p>Once in this interface, you’ll notice the filters on the left side.</p>
+                    <ul>
+                        <li><code>Codes</code> allow you can search for relevant data based on specific code systems such as NAICS, NAPCS, EEO, and others.</li>
+                        <li><code>Geography</code> allows you to select the scale(s) of data for your analysis.</li>
+                        <li><code>Surveys</code> allow you to select more specific data associated with redistricting and demographics.</li>
+                        <li><code>Topics</code> allows you to focus on a category of data (which is only vacancy related for me).</li>
+                        <li><code>Years</code> allows you to define the temporal dimension for your data query.</li>
+                    </ul>
+                    <p>So let’s grab some census data for analysis. Let’s add a <code>2020</code> filter from Year, add <code>All Counties within Florida</code> from Geography, and click <code>Search</code> in the lower right corner.</p>
+                    <a href="img/census_data_explore_search.png">
+                        <img class="img-responsive" src="img/census_data_explore_search.png" alt="Oops!">
+                    </a>
+                    <span class="caption text-muted"><a href="https://data.census.gov/cedsci/all?g=0400000US12%240500000&y=2020" target="_blank" rel="noopener noreferrer">2020 Florida Counties Search Results</a></span>
+                    <p>You should see something like the image above. The explorer allows you to add or modify the filter to better refine your search results. Let’s select the <code>H1 | OCCUPANCY STATUS table</code>.</p>
+                    <a href="img/census_data_explore_download.png">
+                        <img class="img-responsive" src="img/census_data_explore_download.png" alt="Oops!">
+                    </a>
+                    <span class="caption text-muted"><a href="https://data.census.gov/cedsci/table?g=0400000US12%240500000&y=2020&tid=DECENNIALPL2020.H1" target="_blank" rel="noopener noreferrer">2020 Florida Counties H1 Occupancy Download</a></span>
+                    <p>By selecting the table from the list, you will see a table sample appear with schema and values. There are several tools you can use with this table including additional filters, search, table transpose, data export, data download, and the option to visit the FTP site to search additional raw data holdings. Let’s select the <code>Download</code> option and select the <code>Download</code> button in the lower right corner.</p>
+                    <a href="img/census_data_explore_export.png">
+                        <img class="img-responsive" src="img/census_data_explore_export.png" alt="Oops!">
+                    </a>
+                    <p>A pop-up will show the export preparation and finally a signal to <code>DOWNLOAD NOW</code>. Save the zip file to a location of your choosing. Let’s repeat this download process for the <code>P1 | RACE</code> table.</p>
+                    <a href="img/census_data_ftp.png">
+                        <img class="img-responsive" src="img/census_data_ftp.png" alt="Oops!">
+                    </a>
+                    <span class="caption text-muted"><a href="https://www2.census.gov/" target="_blank" rel="noopener noreferrer">US Census Data FTP</a></span>
+                    <p>If you require additional information or require a complete download of multi-year, multi-code, multi-scale data, the FTP site (shown above) has the raw data holding as well as the readme materials for the census data collections.</p>
+                    <h3>Metadata and Documentation</h3>
                     <p></p>
-
+                    <h3>Application Programming interface</h3>
+                    <p></p>
+                    <h3>Spatial Layers</h3>
+                    <p></p>
+                    
                     <h2 class="section-heading">Extracting Census Data</h2>
                     <p></p>
 
