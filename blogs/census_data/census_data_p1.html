@@ -106,7 +106,7 @@
 
                     <h3>GEOID</h3>
                     <p>The US Census data encompasses several data engineering factors: complex schema covering several dimensions; varying scales of geographic information within a strict hierarchy; connection to other data collections using varying data types. <a href="https://www.census.gov/programs-surveys/geography/guidance/geo-identifiers.html" target="_blank" rel="noopener noreferrer">Geographic identifiers (GEOIDs)</a> are unique numeric codes used to track dimensional measures across varying scales within the census. The codes are also the connective fabric between the census and other supplementary data such as TIGER, ANSI, DoE, and USGS data products.</p>
-                    <p>Specific to the US Census data we’ll be using, the block code <code>482012231001050</code> follows this hierarchical pattern:</p>
+                    <p>Specific to the US Census data we'll be using, the block code <code>482012231001050</code> follows this hierarchical pattern:</p>
                     <ul>
                         <li>48 for the state</li>
                         <li>201 for the county</li>
@@ -115,27 +115,27 @@
                         <li>050 for the block</li>
                     </ul>
                     <p>There are variations to this such as places, but these changes are identifiable in the schema for place data. The US Census data explorer helps you select and identify the GEOID structures when you search for and download the data (often captured in a metadata file).</p>
-                    <p>And with that, let’s go grab some data!</p>
+                    <p>And with that, let's go grab some data!</p>
 
                     <h2 class="section-heading">Accessing Data</h2>
                     <p>There are several ways to access census data. For GIS or data analysis professionals, the traditional way to access this data is to download flat files. This can be done through the census website or more directly through a FTP site. With the updates to the census data website, I would recommend that option due to the advanced query feature that will allow you to download just the fields and scale of data you need for your analysis. The US Census Bureau also provides a direct API option if you require persistent automated access to the data for more advanced data modeling.</p>
-                    <p>Let’s start with the old-fashion way.</p>
+                    <p>Let's start with the old-fashion way.</p>
 
                     <h3>Metadata and Documentation</h3>
-                    <p>Whoa! Pump the brakes. Before you go ahead with downloading data, let’s make sure you’re downloading the correct data for your research! This requires reading a good amount of documentation and reviewing metadata for the appropriately identified data sets (a literature review may also help accelerate this process… just saying :D ).</p>
-                    <p>The US Census maintains large amounts of data and much larger amounts of documentation. This documentation is the most critical reason why the data is one of the richest and well-maintained collections in the world. The metadata and data dictionaries make using this data for research simple as it’s provenance and legacy can be cross-validated and cross-referenced by multiple parties. The <a href="https://www.census.gov/programs-surveys/decennial-census.html" target="_blank" rel="noopener noreferrer">decennial census</a> and <a href="https://www.census.gov/programs-surveys/acs" target="_blank" rel="noopener noreferrer">American Community Surveys</a> are the most commonly referenced, but there are dozens of direct and derived data sets for topic from economics to education and incarceration. Before attempting any research with census data, you should thoroughly read the documentation for the <a href="https://www.census.gov/programs-surveys/surveys-programs.html" target="_blank" rel="noopener noreferrer">survey and/or program data</a> you have selected.</p>
+                    <p>Whoa! Pump the brakes. Before you go ahead with downloading data, let's make sure you're downloading the correct data for your research! This requires reading a good amount of documentation and reviewing metadata for the appropriately identified data sets (a literature review may also help accelerate this process… just saying :D ).</p>
+                    <p>The US Census maintains large amounts of data and much larger amounts of documentation. This documentation is the most critical reason why the data is one of the richest and well-maintained collections in the world. The metadata and data dictionaries make using this data for research simple as it's provenance and legacy can be cross-validated and cross-referenced by multiple parties. The <a href="https://www.census.gov/programs-surveys/decennial-census.html" target="_blank" rel="noopener noreferrer">decennial census</a> and <a href="https://www.census.gov/programs-surveys/acs" target="_blank" rel="noopener noreferrer">American Community Surveys</a> are the most commonly referenced, but there are dozens of direct and derived data sets for topic from economics to education and incarceration. Before attempting any research with census data, you should thoroughly read the documentation for the <a href="https://www.census.gov/programs-surveys/surveys-programs.html" target="_blank" rel="noopener noreferrer">survey and/or program data</a> you have selected.</p>
                     <h3>Downloading Data</h3>
                     <p>For traditional GIS analysts using ESRI or QGIS, this is perhaps the most common path to access and download census data (this may even be true for data analysts and data scientists). We start by using the <a href="https://data.census.gov/cedsci/" target="_blank" rel="noopener noreferrer">Census Data Explorer</a>.</p>
                     <a href="img/census_data_explore.png">
                         <img class="img-responsive" src="img/census_data_explore.png" alt="Oops!">
                     </a>
                     <span class="caption text-muted"><a href="https://data.census.gov/cedsci/" target="_blank" rel="noopener noreferrer">US Census Data Explorer</a></span>
-                    <p>This is a great website that helps you understand the available data and the Census Bureau’s supporting utilities. You’ll want to click on Advanced Search underneath the search box as this is the real power of their explorer.</p>
+                    <p>This is a great website that helps you understand the available data and the Census Bureau's supporting utilities. You'll want to click on Advanced Search underneath the search box as this is the real power of their explorer.</p>
                     <a href="img/census_data_explore_adv.png">
                         <img class="img-responsive" src="img/census_data_explore_adv.png" alt="Oops!">
                     </a>
                     <span class="caption text-muted"><a href="https://data.census.gov/cedsci/advanced" target="_blank" rel="noopener noreferrer">US Census Advanced Data Search</a></span>
-                    <p>Once in this interface, you’ll notice the filters on the left side.</p>
+                    <p>Once in this interface, you'll notice the filters on the left side.</p>
                     <ul>
                         <li><code>Codes</code> allow you can search for relevant data based on specific code systems such as NAICS, NAPCS, EEO, and others.</li>
                         <li><code>Geography</code> allows you to select the scale(s) of data for your analysis.</li>
@@ -143,37 +143,151 @@
                         <li><code>Topics</code> allows you to focus on a category of data (which is only vacancy related for me).</li>
                         <li><code>Years</code> allows you to define the temporal dimension for your data query.</li>
                     </ul>
-                    <p>So let’s grab some census data for analysis. Let’s add a <code>2020</code> filter from Year, add <code>All Counties within Florida</code> from Geography, and click <code>Search</code> in the lower right corner.</p>
+                    <p>So let's grab some census data for analysis. Let's add a <code>2020</code> filter from Year, add <code>All Counties within Florida</code> from Geography, and click <code>Search</code> in the lower right corner.</p>
                     <a href="img/census_data_explore_search.png">
                         <img class="img-responsive" src="img/census_data_explore_search.png" alt="Oops!">
                     </a>
                     <span class="caption text-muted"><a href="https://data.census.gov/cedsci/all?g=0400000US12%240500000&y=2020" target="_blank" rel="noopener noreferrer">2020 Florida Counties Search Results</a></span>
-                    <p>You should see something like the image above. The explorer allows you to add or modify the filter to better refine your search results. Let’s select the <code>H1 | OCCUPANCY STATUS table</code>.</p>
+                    <p>You should see something like the image above. The explorer allows you to add or modify the filter to better refine your search results. Let's select the <code>H1 | OCCUPANCY STATUS table</code>.</p>
                     <a href="img/census_data_explore_download.png">
                         <img class="img-responsive" src="img/census_data_explore_download.png" alt="Oops!">
                     </a>
                     <span class="caption text-muted"><a href="https://data.census.gov/cedsci/table?g=0400000US12%240500000&y=2020&tid=DECENNIALPL2020.H1" target="_blank" rel="noopener noreferrer">2020 Florida Counties H1 Occupancy Download</a></span>
-                    <p>By selecting the table from the list, you will see a table sample appear with schema and values. There are several tools you can use with this table including additional filters, search, table transpose, data export, data download, and the option to visit the FTP site to search additional raw data holdings. Let’s select the <code>Download</code> option and select the <code>Download</code> button in the lower right corner.</p>
+                    <p>By selecting the table from the list, you will see a table sample appear with schema and values. There are several tools you can use with this table including additional filters, search, table transpose, data export, data download, and the option to visit the FTP site to search additional raw data holdings. Let's select the <code>Download</code> option and select the <code>Download</code> button in the lower right corner.</p>
                     <a href="img/census_data_explore_export.png">
                         <img class="img-responsive" src="img/census_data_explore_export.png" alt="Oops!">
                     </a>
-                    <p>A pop-up will show the export preparation and finally a signal to <code>DOWNLOAD NOW</code>. Save the zip file to a location of your choosing. Let’s repeat this download process for the <code>P1 | RACE</code> table.</p>
+                    <p>A pop-up will show the export preparation and finally a signal to <code>DOWNLOAD NOW</code>. Save the zip file to a location of your choosing. Let's repeat this download process for the <code>P1 | RACE</code> table.</p>
                     <a href="img/census_data_ftp.png">
                         <img class="img-responsive" src="img/census_data_ftp.png" alt="Oops!">
                     </a>
                     <span class="caption text-muted"><a href="https://www2.census.gov/" target="_blank" rel="noopener noreferrer">US Census Data FTP</a></span>
                     <p>If you require additional information or require a complete download of multi-year, multi-code, multi-scale data, the FTP site (shown above) has the raw data holding as well as the readme materials for the census data collections.</p>
+
                     <h3>Application Programming interface</h3>
-                    <p></p>
+                    <p>The US Census Bureau provides programmatic access to their data via a number of RESTful application programming interfaces (APIs). These APIs and their documentation are available via their developer page. On this page, there is a link to <code>Request a KEY</code> which you'll need to complete any request to their APIs. Enter your organization name, email address, agree to their terms of service, and click submit. You should receive an email with your key which we'll use in the next section of this post.</p>
+                    <a href="img/census_data_api.png">
+                        <img class="img-responsive" src="img/census_data_api.png" alt="Oops!">
+                    </a>
+                    <span class="caption text-muted"><a href="https://www.census.gov/data/developers.html" target="_blank" rel="noopener noreferrer">US Census Data for Developers</a></span>
+                    <p>There are many APIs available which you can view by scrolling down and selecting the <code>VIEW ALL AVAILABLE APIS</code> button.</p>
+                    <a href="img/census_data_api_data.png">
+                        <img class="img-responsive" src="img/census_data_api_data.png" alt="Oops!">
+                    </a>
+                    <span class="caption text-muted"><a href="https://www.census.gov/data/developers/data-sets.html" target="_blank" rel="noopener noreferrer">US Census Data API list</a></span>
+                    <p>Once you're in the Available API list above, we can explore all the data available to us. This includes the decennial census data for 2020 that we downloaded from the explorer. Select the <code>Decennial Census</code> and then <code>Decennial Census (2020, 2010, 2000)</code> from the list.</p>
+                    <a href="img/census_data_api_decennial.png">
+                        <img class="img-responsive" src="img/census_data_api_decennial.png" alt="Oops!">
+                    </a>
+                    <span class="caption text-muted"><a href="https://www.census.gov/data/developers/data-sets/decennial-census.html" target="_blank" rel="noopener noreferrer">US Census Data API - Decennial Census</a></span>
+                    <p>Once on the API page for the Decennial Census data, you can explore the query variables, technical documentation for the API, and sample queries for the data you require. Select the <code>2020 PL Examples and Supported Geography</code> link. This will give you a simplified, consolidated view of the RESTful interface and how to tailor it to extract the data you need.</p>
+                    <a href="img/census_data_api_decennial_doc.png">
+                        <img class="img-responsive" src="img/census_data_api_decennial_doc.png" alt="Oops!">
+                    </a>
+                    <span class="caption text-muted"><a href="https://api.census.gov/data/2020/dec/pl.html" target="_blank" rel="noopener noreferrer">US Census Data API - 2020 Decennial Census API Documentation</a></span>
+                    <p>We'll use this later when we're extracting and examining our data. However, we still need some additional data because of course you do. :D</p>
                     <h3>Spatial Layers</h3>
-                    <p></p>
-                    
+                    <p>As mentioned above, the GEOID is the manner in which census data is combined with other data collection for more complex forms of analysis. One such data set are the spatial layers files used to join census data to their scales of geographic area. These mapping files can be used in traditional geographic information systems like QGIS or ESRI software and in more modern web applications such Mapbox. This utilization allows for more complex analysis of spatial patterns found in the census data.</p>
+                    <a href="img/census_data_spatial.png">
+                        <img class="img-responsive" src="img/census_data_spatial.png" alt="Oops!">
+                    </a>
+                    <span class="caption text-muted"><a href="https://www.census.gov/geographies/mapping-files.html" target="_blank" rel="noopener noreferrer">US Census - Mapping Data</a></span>
+                    <p>Shapefiles, KML, and geodatabases are available for download. It is important to select the correct year for the census data you have downloads. This year matching ensures that the number of records in census data match the number of spatial areas with the same GEOID in the spatial layers. Select <code>2020</code> from the years listed and then select <code>TIGER/Line Shapefiles</code>.</p>
+                    <a href="img/census_data_spatial_tiger.png">
+                        <img class="img-responsive" src="img/census_data_spatial_tiger.png" alt="Oops!">
+                    </a>
+                    <span class="caption text-muted"><a href="https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html" target="_blank" rel="noopener noreferrer">US Census - TIGER Files</a></span>
+                    <p>TIGER files are the legal boundaries established per census year. You can download these files via web interface or FTP, but we'll opt for FTP so we can examine the TIGER data collection. Once on the TIGER page, select <code>2020</code> for the year and scroll down to select <code>FTP Archive by State</code>.</p>
+                    <a href="img/census_data_spatial_ftp.png">
+                        <img class="img-responsive" src="img/census_data_spatial_ftp.png" alt="Oops!">
+                    </a>
+                    <span class="caption text-muted"><a href="https://www2.census.gov/geo/tiger/TIGER2020PL/STATE/" target="_blank" rel="noopener noreferrer">US Census - TIGER FTP</a></span>
+                    <p>Once in the FTP site, select <code>12_FLORIDA</code>, then <code>12</code> for all counties, and then <code>tl_2020_12_county20.zip</code> to download the TIGER data for Florida counties.</p>
+                    <p>With the access to census data and spatial data layers, we're now ready for some exploratory data analysis.</p>
+
+
                     <h2 class="section-heading">Extracting Census Data</h2>
-                    <p></p>
+                    <p>Now that we've had a brief introduction to the census data, we're now ready to load our data and take a quick look at it. There are several ways to do this, so we'll start with the traditional route of using GIS software and then move to more programmatic data processes.</p>
+                    <p>GIS software such as QGIS can be extremely useful for initial and exploratory data analysis. Using QGIS, we can load the H1 census data as a table without geometry information, load our TIGER data for Florida counties, and perform a join on the GEOID in each file to produce a choropleth map of 2020 Housing Occupancy Totals. QGIS also comes with tools for refined map creation, spatial statistical analysis, and geovisualization through a number of plugins.</p>
+                    <a href="img/census_data_eda_qgis.png">
+                        <img class="img-responsive" src="img/census_data_eda_qgis.png" alt="Oops!">
+                    </a>
+                    <span class="caption text-muted">US Census - QGIS Preview for 2020 H1 - Totals Data</a></span>
+                    <p>The US Census has much more data than the H1 data set we visualized above and downloading this data across the entire country and across census years for multi-scalar and longitudinal analysis may prove extremely difficult and time consuming. This challenge is where use of APIs and programming languages may be a superior solution for automating and accelerating what is traditionally a very manual and tedious process.</p>
+                    <p>The US Census does provide some packaged solutions for this, making Microsoft Access, SAS, and R scripts available through their <a href="https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html" target="_blank" rel="noopener noreferrer">legacy developer tools</a>. GitHub also contains several projects to assist in processing and analysis of census data. We’re going to be using Python for the remainder of Part 1 and for Part 2.</p>
+                    <p>If you downloaded the data from explorer in CSV format, loading it is as simple as using Pandas or GeoPandas to created a dataframes with the CSV file.</p>
 
                     <pre>
-Code goes here
+import pandas as pd
+
+h1_ex_df = pd.read_csv('data/DECENNIALPL2020.H1_data_with_overlays_2022-01-15T201832.csv')
+h1_ex_df = h1_ex_df.drop([0])
+h1_ex_df.head()
 </pre>
+                    <p>Use of the API will require a bit more work. First, you'll need your API key. Then you will need to examine the documentation to ensure your RESTful query will produce the data output you need for your analysis. This will require knowing variable like the year, the data element, and the geographic scale of the data.</p>
+                    <p>We're going to use the API to recreated what we exported from the data explorer above.</p>
+
+                    <pre>
+import requests
+import pandas as pd
+
+api_key = 'your API key'
+
+data_elements = ['GEO_ID', 'H1_001N', 'H1_002N', 'H1_003N']
+geo_scale = 'for=county:*&in=state:12'
+
+def decennial_api_etl(year, element, geo_scale, api_key):
+    api_data = requests.get(f"https://api.census.gov/data/{year}/dec/pl?get={element}&{geo_scale}&key={api_key}")
+    df = pd.read_json(api_data.text)
+    df.columns = df.iloc[0]
+    df = df.drop([0])
+    df = df.drop(columns=['state'])
+    return df
+
+combined = decennial_api_etl('2020', 'NAME', geo_scale, api_key)
+combined = combined.drop(columns=['NAME'])
+
+for i in data_elements:
+    df = decennial_api_etl('2020', i, geo_scale, api_key)
+    combined = pd.merge(combined, df, on='county')
+
+combined.head()
+
+</pre>
+                    <p>So let's walkthrough the insanity you see above:</p>
+                    <ul>
+                        <li>Import requests to interact with the RESTful API and Pandas to load and transform the data</li>
+                        <li>Create a variable for the API key</li>
+                        <li>Create a variable containing a list of API element we want to download</li>
+                        <li>Create a variable for the geography scale of the data (in this case we're looking at Florida counties)</li>
+                        <li>Define a function <code>decennial_api_etl</code> to create a reusable chunk of code to:
+                            <ul>
+                                <li>Get the JSON from the API
+                                    <ul>
+                                        <li>Requests uses the <code>get</code> method to send a string to the API</li>
+                                        <li>Use <code>f-string</code> replacements for the year, element, geo_scale, and api_key arguments</li>
+                                    </ul>
+                                </li>
+                                <li>Use Pandas to read JSON into a DataFrame</li>
+                                <li>Assign column names using the first row</li>
+                                <li>Drop the now duplicate header row</li>
+                                <li>Drop an unnecessary column <code>state</code> </li>
+                                <li>Return the transformed DataFrame from the function</li>
+                            </ul>
+                        </li>
+                        <li>Define a dataframe variable <code>combined</code> containing the <code>NAME</code> API data using the <code>decennial_api_etl</code> function</li>
+                        <li>Drop the <code>NAME</code> column from the <code>combined</code> dataframe</li>
+                        <li>Iterate through the <code>data_elements</code> list:</li>
+                            <ul>
+                                <li>For each element in the list, load it into a dataframe <code>df</code></li>
+                                <li>Merge <code>df</code> with <code>combined</code> on the <code>county</code> field</li>
+                            </ul>
+                    </ul>
+                    <p>Once the data is loaded, we're ready for exploratory data analysis which we'll pick up in Part 2!</p>
+                        
+                    <h2 class="section-heading">Wrapping Up</h2>
+                    <p>The importance of cross-validated and openly-available national census data cannot be understated: it is an essential collection critical in almost all government operations and industry analytic requirements. It is also important for citizens to know this data is available for them and is extremely useful for themselves and their communities. Due to the scrutiny placed on this data and the numerous research projects conducted with it, census data makes for excellent training data for data analysts, data scientists, and data engineers.</p>
+                    <p>In Part 2, we'll perform exploratory data analysis with our census data: using this analysis to conceive a research project.</p>
 
                     <p>
                         <b>References</b><br>
