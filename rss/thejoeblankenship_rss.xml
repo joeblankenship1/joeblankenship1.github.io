@@ -27,6 +27,14 @@ xmlns:atom="http://www.w3.org/2005/Atom"
 </item>
 
 <item>
+  <title>Census Data: Part 1: Background, Access, and Extraction</title>
+  <guid isPermaLink="true">https://thejoeblankenship.com/blogs/census_data/census_data_p1</guid>
+  <link>https://thejoeblankenship.com/blogs/census_data/census_data_p1</link>
+  <pubDate>Sun, 16 Jan 2022 17:00:00 +0500</pubDate>
+  <description>Blog on US Census Data background, access, and extraction for research and analysis.</description>
+</item>
+
+<item>
   <title>Streamlit: Collaborative EDA Made Simple</title>
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/streamlit/streamlit</guid>
   <link>https://thejoeblankenship.com/blogs/streamlit/streamlit</link>
