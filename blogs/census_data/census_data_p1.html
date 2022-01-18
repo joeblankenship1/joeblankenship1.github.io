@@ -212,7 +212,7 @@
                     <a href="img/census_data_eda_qgis.png">
                         <img class="img-responsive" src="img/census_data_eda_qgis.png" alt="Oops!">
                     </a>
-                    <span class="caption text-muted">US Census - QGIS Preview for 2020 H1 - Totals Data</a></span>
+                    <span class="caption text-muted"><a href="https://www.qgis.org/" target="_blank" rel="noopener noreferrer">US Census - QGIS Preview for 2020 H1 - Totals Data</a></span>
                     <p>The US Census has much more data than the H1 data set we visualized above and downloading this data across the entire country and across census years for multi-scalar and longitudinal analysis may prove extremely difficult and time consuming. This challenge is where use of APIs and programming languages may be a superior solution for automating and accelerating what is traditionally a very manual and tedious process.</p>
                     <p>The US Census does provide some packaged solutions for this, making Microsoft Access, SAS, and R scripts available through their <a href="https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html" target="_blank" rel="noopener noreferrer">legacy developer tools</a>. GitHub also contains several projects to assist in processing and analysis of census data. We’re going to be using Python for the remainder of Part 1 and for Part 2.</p>
                     <p>If you downloaded the data from explorer in CSV format, loading it is as simple as using Pandas or GeoPandas to created a dataframes with the CSV file.</p>
@@ -283,6 +283,9 @@ combined.head()
                                 <li>Merge <code>df</code> with <code>combined</code> on the <code>county</code> field</li>
                             </ul>
                     </ul>
+
+                    <blockquote>A more Pythonic way (add the preferred way) to bring the JSON data into a dataframe would be <code>df = pd.DataFrame(api_data.json()[1:], columns=api_data.json()[0])</code>. However, I've expanded this consolidated process into simpler dataframe commands to illustrate the ETL process going into the dataframe merge loop.</blockquote>
+
                     <p>Once the data is loaded, we're ready for exploratory data analysis which we'll pick up in Part 2!</p>
                         
                     <h2 class="section-heading">Wrapping Up</h2>
