@@ -19,11 +19,11 @@ xmlns:atom="http://www.w3.org/2005/Atom"
 <language>en</language>
 
 <item>
-  <title>News for July!</title>
+  <title>News for August!</title>
   <guid isPermaLink="true">https://thejoeblankenship.com/news</guid>
   <link>https://thejoeblankenship.com/news</link>
-  <pubDate>Sat, 02 Jul 2022 05:00:00 +0500</pubDate>
-  <description>Latest updates for July 2022!</description>
+  <pubDate>Mon, 01 Aug 2022 05:00:00 +0500</pubDate>
+  <description>Latest updates for August 2022!</description>
 </item>
 
 <item>
@@ -31,7 +31,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/ontology/ontology</guid>
   <link>https://thejoeblankenship.com/blogs/ontology/ontology</link>
   <pubDate>Tue, 01 Feb 2022 17:00:00 +0500</pubDate>
-  <description>Blog on the challenges on implementing an upper-level ontology for AI research.</description>
+  <description>Blog on the challenges on implementing an upper-level ontology for AI research. https://thejoeblankenship.com/blogs/ontology/ontology</description>
 </item>
 
 <item>
@@ -39,7 +39,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/census_data/census_data_p1</guid>
   <link>https://thejoeblankenship.com/blogs/census_data/census_data_p1</link>
   <pubDate>Sun, 16 Jan 2022 17:00:00 +0500</pubDate>
-  <description>Blog on US Census Data background, access, and extraction for research and analysis.</description>
+  <description>Blog on US Census Data background, access, and extraction for research and analysis. https://thejoeblankenship.com/blogs/census_data/census_data_p1</description>
 </item>
 
 <item>
@@ -47,7 +47,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/streamlit/streamlit</guid>
   <link>https://thejoeblankenship.com/blogs/streamlit/streamlit</link>
   <pubDate>Tue, 23 Nov 2021 17:00:00 +0500</pubDate>
-  <description>Blog on using Streamlit dashboards as a way to engage in collaborative EDA for inter-team communication.</description>
+  <description>Blog on using Streamlit dashboards as a way to engage in collaborative EDA for inter-team communication. https://thejoeblankenship.com/blogs/streamlit/streamlit</description>
 </item>
 
 <item>
@@ -55,7 +55,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/friction/friction</guid>
   <link>https://thejoeblankenship.com/blogs/friction/friction</link>
   <pubDate>Sat, 21 Mar 2020 17:00:00 +0500</pubDate>
-  <description>Blog on friction of distance, distance decay, news media hype, and improved communication.</description>
+  <description>Blog on friction of distance, distance decay, news media hype, and improved communication. https://thejoeblankenship.com/blogs/friction/friction</description>
 </item>
 
 <item>
@@ -63,7 +63,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/bitcoin_graph/bitcoin_graph</guid>
   <link>https://thejoeblankenship.com/blogs/bitcoin_graph/bitcoin_graph</link>
   <pubDate>Sun, 30 Dec 2019 17:00:00 +0500</pubDate>
-  <description>Blog on using my bitcoin_graph Python library with a use case.</description>
+  <description>Blog on using my bitcoin_graph Python library with a use case. https://thejoeblankenship.com/blogs/bitcoin_graph/bitcoin_graph</description>
 </item>
 
 <item>
@@ -71,7 +71,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/fletcher_keyboard/fletcher_keyboard</guid>
   <link>https://thejoeblankenship.com/blogs/fletcher_keyboard/fletcher_keyboard</link>
   <pubDate>Sun, 24 Mar 2019 17:00:00 +0500</pubDate>
-  <description>Blog on building a DIY ergonimic keyboard... with pictures!</description>
+  <description>Blog on building a DIY ergonimic keyboard... with pictures! https://thejoeblankenship.com/blogs/fletcher_keyboard/fletcher_keyboard</description>
 </item>
 
 <item>
@@ -79,7 +79,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/slow_internet/slow_internet</guid>
   <link>https://thejoeblankenship.com/blogs/slow_internet/slow_internet</link>
   <pubDate>Tue, 23 Feb 2019 17:00:00 +0500</pubDate>
-  <description>Blog on rationalizing digital minimalism with reality of digital divide around the world.</description>
+  <description>Blog on rationalizing digital minimalism with reality of digital divide around the world. https://thejoeblankenship.com/blogs/slow_internet/slow_internet</description>
 </item>
 
 <item>
@@ -87,7 +87,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/sanic/sanic</guid>
   <link>https://thejoeblankenship.com/blogs/sanic/sanic</link>
   <pubDate>Tue, 01 Jan 2019 17:00:00 +0500</pubDate>
-  <description>Blog on building async web apps with Sanic in Python.</description>
+  <description>Blog on building async web apps with Sanic in Python. https://thejoeblankenship.com/blogs/sanic/sanic</description>
 </item>
 
 <item>
@@ -95,7 +95,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/python_course/python_course</guid>
   <link>https://thejoeblankenship.com/blogs/python_course/python_course</link>
   <pubDate>Tue, 13 Nov 2018 17:00:00 +0500</pubDate>
-  <description>Blog on issues related to making an effective Python couse for data scientists</description>
+  <description>Blog on issues related to making an effective Python couse for data scientists. https://thejoeblankenship.com/blogs/python_course/python_course</description>
 </item>
 
 <item>
@@ -103,7 +103,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/animated_gif/animated_gif</guid>
   <link>https://thejoeblankenship.com/blogs/animated_gif/animated_gif</link>
   <pubDate>Tue, 20 Oct 2018 17:00:00 +0500</pubDate>
-  <description>Quick blog on generating animated gifs with ffmpeg</description>
+  <description>Quick blog on generating animated gifs with ffmpeg. https://thejoeblankenship.com/blogs/animated_gif/animated_gif</description>
 </item>
 
 <item>
@@ -111,7 +111,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/silkroad/silkroad</guid>
   <link>https://thejoeblankenship.com/blogs/silkroad/silkroad</link>
   <pubDate>Tue, 02 Sep 2018 17:00:00 +0500</pubDate>
-  <description>Review of Illicit Exchange and Bitcoin</description>
+  <description>Review of Illicit Exchange and Bitcoin. https://thejoeblankenship.com/blogs/silkroad/silkroad</description>
 </item>
 
 <item>
@@ -119,7 +119,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/vibora/vibora</guid>
   <link>https://thejoeblankenship.com/blogs/vibora/vibora</link>
   <pubDate>Tue, 07 Aug 2018 17:00:00 +0500</pubDate>
-  <description>Overview of Vibora Web Framework</description>
+  <description>Overview of Vibora Web Framework. https://thejoeblankenship.com/blogs/vibora/vibora</description>
 </item>
 
 <item>
@@ -127,7 +127,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/anonymous/anonymous</guid>
   <link>https://thejoeblankenship.com/blogs/anonymous/anonymous</link>
   <pubDate>Tue, 28 Jun 2018 17:00:00 +0500</pubDate>
-  <description>Anarchist Geographies of Hacktivism</description>
+  <description>Anarchist Geographies of Hacktivism. https://thejoeblankenship.com/blogs/anonymous/anonymous</description>
 </item>
 
 <item>
@@ -135,7 +135,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/networkx/networkx</guid>
   <link>https://thejoeblankenship.com/blogs/networkx/networkx</link>
   <pubDate>Tue, 31 May 2018 17:00:00 +0500</pubDate>
-  <description>Social Network Analysis in Python</description>
+  <description>Social Network Analysis in Python. https://thejoeblankenship.com/blogs/networkx/networkx</description>
 </item>
 
 <item>
@@ -143,7 +143,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/mlr_r/mlr_r</guid>
   <link>https://thejoeblankenship.com/blogs/mlr_r/mlr_r</link>
   <pubDate>Tue, 29 Apr 2018 17:00:00 +0500</pubDate>
-  <description>Foreclosure Analysis in R</description>
+  <description>Foreclosure Analysis in R. https://thejoeblankenship.com/blogs/mlr_r/mlr_r</description>
 </item>
 
 <item>
@@ -151,7 +151,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/bitcoin_labor/bitcoin_labor</guid>
   <link>https://thejoeblankenship.com/blogs/bitcoin_labor/bitcoin_labor</link>
   <pubDate>Tue, 28 Mar 2018 17:00:00 +0500</pubDate>
-  <description>Global Footprint and Issues of Access</description>
+  <description>Global Footprint and Issues of Access. https://thejoeblankenship.com/blogs/bitcoin_labor/bitcoin_labor</description>
 </item>
 
 <item>
@@ -159,7 +159,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/frontend_dev/frontend_dev</guid>
   <link>https://thejoeblankenship.com/blogs/frontend_dev/frontend_dev</link>
   <pubDate>Tue, 28 Feb 2018 17:00:00 +0500</pubDate>
-  <description>Experiences with Front-End Development</description>
+  <description>Experiences with Front-End Development. https://thejoeblankenship.com/blogs/frontend_dev/frontend_dev</description>
 </item>
 
 <item>
@@ -167,7 +167,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/algo_gov/algo_gov</guid>
   <link>https://thejoeblankenship.com/blogs/algo_gov/algo_gov</link>
   <pubDate>Tue, 20 Jan 2018 17:00:00 +0500</pubDate>
-  <description>Thoughts of Algorithmic Governance</description>
+  <description>Thoughts of Algorithmic Governance. https://thejoeblankenship.com/blogs/algo_gov/algo_gov</description>
 </item>
 
 <item>
@@ -175,7 +175,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/data_ethics/data_ethics</guid>
   <link>https://thejoeblankenship.com/blogs/data_ethics/data_ethics</link>
   <pubDate>Tue, 01 Jan 2018 17:00:00 +0500</pubDate>
-  <description>Ethics in Data Science</description>
+  <description>Ethics in Data Science. https://thejoeblankenship.com/blogs/data_ethics/data_ethics</description>
 </item>
 
 <item>
@@ -183,7 +183,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/sharing_economy/sharing_economy</guid>
   <link>https://thejoeblankenship.com/blogs/sharing_economy/sharing_economy</link>
   <pubDate>Tue, 28 Dec 2017 17:00:00 +0500</pubDate>
-  <description>Opinions on the Sharing Economy</description>
+  <description>Opinions on the Sharing Economy. https://thejoeblankenship.com/blogs/sharing_economy/sharing_economy</description>
 </item>
 
 <item>
@@ -191,7 +191,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/net_neutral/net_neutral</guid>
   <link>https://thejoeblankenship.com/blogs/net_neutral/net_neutral</link>
   <pubDate>Tue, 20 Nov 2017 17:00:00 +0500</pubDate>
-  <description>Thoughts on end of Net Neutrality</description>
+  <description>Thoughts on end of Net Neutrality. https://thejoeblankenship.com/blogs/net_neutral/net_neutral</description>
 </item>
 
 <item>
@@ -199,7 +199,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/concept_code/concept_code_p2</guid>
   <link>https://thejoeblankenship.com/blogs/concept_code/concept_code_p2</link>
   <pubDate>Tue, 16 Nov 2017 17:00:00 +0500</pubDate>
-  <description>Part 2 of the Conceptualizing Code Series</description>
+  <description>Part 2 of the Conceptualizing Code Series. https://thejoeblankenship.com/blogs/concept_code/concept_code_p2</description>
 </item>
 
 <item>
@@ -207,7 +207,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/concept_code/concept_code_p1</guid>
   <link>https://thejoeblankenship.com/blogs/concept_code/concept_code_p1</link>
   <pubDate>Tue, 28 Sep 2017 17:00:00 +0500</pubDate>
-  <description>Part 1 of the Conceptualizing Code Series</description>
+  <description>Part 1 of the Conceptualizing Code Series. https://thejoeblankenship.com/blogs/concept_code/concept_code_p1</description>
 </item>
 
 <item>
@@ -215,7 +215,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/faircoin/faircoin</guid>
   <link>https://thejoeblankenship.com/blogs/faircoin/faircoin</link>
   <pubDate>Tue, 20 Aug 2017 17:00:00 +0500</pubDate>
-  <description>An overview of the FairCoin economic system</description>
+  <description>An overview of the FairCoin economic system. https://thejoeblankenship.com/blogs/faircoin/faircoin</description>
 </item>
 
 <item>
@@ -223,7 +223,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/docx_recovery/docx_recovery</guid>
   <link>https://thejoeblankenship.com/blogs/docx_recovery/docx_recovery</link>
   <pubDate>Tue, 22 Jun 2017 17:00:00 +0500</pubDate>
-  <description>A short write-up on recovering docx files</description>
+  <description>A short write-up on recovering docx files. https://thejoeblankenship.com/blogs/docx_recovery/docx_recovery</description>
 </item>
 
 <item>
@@ -231,7 +231,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/geopy_folium/geopy_folium</guid>
   <link>https://thejoeblankenship.com/blogs/geopy_folium/geopy_folium</link>
   <pubDate>Tue, 11 May 2017 17:00:00 +0500</pubDate>
-  <description>Making maps with geopy and folium</description>
+  <description>Making maps with geopy and folium. https://thejoeblankenship.com/blogs/geopy_folium/geopy_folium</description>
 </item>
 
 <item>
@@ -239,7 +239,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/organizer_lessons/organizer_lessons</guid>
   <link>https://thejoeblankenship.com/blogs/organizer_lessons/organizer_lessons</link>
   <pubDate>Tue, 01 May 2017 17:00:00 +0500</pubDate>
-  <description>A write-up on running a meetup group</description>
+  <description>A write-up on running a meetup group. https://thejoeblankenship.com/blogs/organizer_lessons/organizer_lessons</description>
 </item>
 
 <item>
@@ -247,7 +247,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/cyborgnatures/cyborgnatures</guid>
   <link>https://thejoeblankenship.com/blogs/cyborgnatures/cyborgnatures</link>
   <pubDate>Tue, 01 Aug 2016 17:00:00 +0500</pubDate>
-  <description>Political ecology of technologically growing urban spaces</description>
+  <description>Political ecology of technologically growing urban spaces. https://thejoeblankenship.com/blogs/cyborgnatures/cyborgnatures</description>
 </item>
 
 <item>
@@ -255,7 +255,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/FCC_digitaldivide/fcc_digitaldivide</guid>
   <link>https://thejoeblankenship.com/blogs/FCC_digitaldivide/fcc_digitaldivide</link>
   <pubDate>Tue, 01 June 2016 17:00:00 +0500</pubDate>
-  <description>Analysis of persistent geographies of technological divide</description>
+  <description>Analysis of persistent geographies of technological divide. https://thejoeblankenship.com/blogs/FCC_digitaldivide/fcc_digitaldivide</description>
 </item>
 
 <item>
@@ -263,7 +263,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/wardriving/wardriving</guid>
   <link>https://thejoeblankenship.com/blogs/wardriving/wardriving</link>
   <pubDate>Tue, 11 May 2016 17:00:00 +0500</pubDate>
-  <description>Analysis of signal-associated digital divide indicators</description>
+  <description>Analysis of signal-associated digital divide indicators. https://thejoeblankenship.com/blogs/wardriving/wardriving</description>
 </item>
 </channel>
 </rss>
