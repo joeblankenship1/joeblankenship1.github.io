@@ -19,11 +19,11 @@ xmlns:atom="http://www.w3.org/2005/Atom"
 <language>en</language>
 
 <item>
-  <title>News for August!</title>
+  <title>News for September!</title>
   <guid isPermaLink="true">https://thejoeblankenship.com/news</guid>
   <link>https://thejoeblankenship.com/news</link>
-  <pubDate>Mon, 01 Aug 2022 05:00:00 +0500</pubDate>
-  <description>Latest updates for August 2022!</description>
+  <pubDate>Mon, 05 Sep 2022 05:00:00 +0500</pubDate>
+  <description>Latest updates for September 2022!</description>
 </item>
 
 <item>
@@ -31,7 +31,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/ontology/ontology</guid>
   <link>https://thejoeblankenship.com/blogs/ontology/ontology</link>
   <pubDate>Tue, 01 Feb 2022 17:00:00 +0500</pubDate>
-  <description>Blog on the challenges on implementing an upper-level ontology for AI research. https://thejoeblankenship.com/blogs/ontology/ontology</description>
+  <description>Blog on the challenges on implementing an upper-level ontology for AI research. <!CDATA[<a href="https://thejoeblankenship.com/blogs/ontology/ontology">Read here!</a>]]></description>
 </item>
 
 <item>
@@ -39,7 +39,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/census_data/census_data_p1</guid>
   <link>https://thejoeblankenship.com/blogs/census_data/census_data_p1</link>
   <pubDate>Sun, 16 Jan 2022 17:00:00 +0500</pubDate>
-  <description>Blog on US Census Data background, access, and extraction for research and analysis. https://thejoeblankenship.com/blogs/census_data/census_data_p1</description>
+  <description>Blog on US Census Data background, access, and extraction for research and analysis. <!CDATA[<a href="https://thejoeblankenship.com/blogs/census_data/census_data_p1">Read here!</a>]]></description>
 </item>
 
 <item>
