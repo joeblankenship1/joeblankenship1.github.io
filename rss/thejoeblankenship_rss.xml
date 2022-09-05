@@ -31,7 +31,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/ontology/ontology</guid>
   <link>https://thejoeblankenship.com/blogs/ontology/ontology</link>
   <pubDate>Tue, 01 Feb 2022 17:00:00 +0500</pubDate>
-  <description>Blog on the challenges on implementing an upper-level ontology for AI research. <!CDATA[<a href="https://thejoeblankenship.com/blogs/ontology/ontology">Read here!</a>]]></description>
+  <description><a href="https://thejoeblankenship.com/blogs/ontology/ontology">Blog on the challenges on implementing an upper-level ontology for AI research.</a></description>
 </item>
 
 <item>
@@ -39,7 +39,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
   <guid isPermaLink="true">https://thejoeblankenship.com/blogs/census_data/census_data_p1</guid>
   <link>https://thejoeblankenship.com/blogs/census_data/census_data_p1</link>
   <pubDate>Sun, 16 Jan 2022 17:00:00 +0500</pubDate>
-  <description>Blog on US Census Data background, access, and extraction for research and analysis. <!CDATA[<a href="https://thejoeblankenship.com/blogs/census_data/census_data_p1">Read here!</a>]]></description>
+  <description>Blog on US Census Data background, access, and extraction for research and analysis. https://thejoeblankenship.com/blogs/census_data/census_data_p1</description>
 </item>
 
 <item>
