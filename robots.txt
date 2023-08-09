@@ -1,2 +1,22 @@
 User-agent: GPTBot
 Disallow: /
+
+User-agent: bingbot
+Disallow: /
+
+User-agent: msnbot
+Disallow: /
+
+User-agent: slurp
+User-agent: yahoo
+Disallow: /
+
+User-agent: jeeves
+User-agent: teoma
+Disallow: /
+
+User-agent: baidu
+Disallow: /
+
+User-agent: yandex
+Disallow: /
